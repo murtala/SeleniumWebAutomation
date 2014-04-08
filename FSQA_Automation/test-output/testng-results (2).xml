@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[<table border='1'><tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><th>MODULE</th><th>TIME</th><th>MODULE</th><th>TIME</th><th>TOTAL TIME</th></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td> Start - setBrowser<td>1381859699927</td> </td>]]>
+    </line>
+    <line>
+      <![CDATA[<td> end- setBrowser<td>1381859701614 </td></td>]]>
+    </line>
+    <line>
+      <![CDATA[<td>Total Time 1 </td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td> Start - login<td>1381859707771</td> </td>]]>
+    </line>
+    <line>
+      <![CDATA[<td> end- login<td>1381859714425 </td></td>]]>
+    </line>
+    <line>
+      <![CDATA[<td>Total Time 6 </td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td> Start - apps<td>1381859714534</td> </td>]]>
+    </line>
+    <line>
+      <![CDATA[<td> end- apps<td>1381859715248 </td></td>]]>
+    </line>
+    <line>
+      <![CDATA[<td>Total Time 0 </td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td> Start - settings<td>1381859715287</td> </td>]]>
+    </line>
+    <line>
+      <![CDATA[<td> end- settings<td>1381859718792 </td></td>]]>
+    </line>
+    <line>
+      <![CDATA[<td>Total Time 3 </td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[</tr>]]>
+    </line>
+    <line>
+      <![CDATA[</table>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td> Start - logOut<td>1381859718792</td> </td>]]>
+    </line>
+    <line>
+      <![CDATA[<td> end- logOut<td>1381859720012 </td></td>]]>
+    </line>
+    <line>
+      <![CDATA[<td>Total Time 1 </td></tr>]]>
+    </line>
+    <line>
+      <![CDATA[</tr>]]>
+    </line>
+    <line>
+      <![CDATA[</table>]]>
+    </line>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="21380" started-at="2013-10-15T17:54:59Z" finished-at="2013-10-15T17:55:21Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="21380" started-at="2013-10-15T17:54:59Z" finished-at="2013-10-15T17:55:21Z">
+      <class name="utils.SamplePageTest">
+        <test-method status="PASS" signature="test1()[pri:0, instance:utils.SamplePageTest@75496982]" name="test1" duration-ms="21368" started-at="2013-10-15T10:54:59Z" description="Navigates to the New Post screen" finished-at="2013-10-15T10:55:21Z">
+          <reporter-output>
+            <line>
+              <![CDATA[<table border='1'><tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><th>MODULE</th><th>TIME</th><th>MODULE</th><th>TIME</th><th>TOTAL TIME</th></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td> Start - setBrowser<td>1381859699927</td> </td>]]>
+            </line>
+            <line>
+              <![CDATA[<td> end- setBrowser<td>1381859701614 </td></td>]]>
+            </line>
+            <line>
+              <![CDATA[<td>Total Time 1 </td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td> Start - login<td>1381859707771</td> </td>]]>
+            </line>
+            <line>
+              <![CDATA[<td> end- login<td>1381859714425 </td></td>]]>
+            </line>
+            <line>
+              <![CDATA[<td>Total Time 6 </td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td> Start - apps<td>1381859714534</td> </td>]]>
+            </line>
+            <line>
+              <![CDATA[<td> end- apps<td>1381859715248 </td></td>]]>
+            </line>
+            <line>
+              <![CDATA[<td>Total Time 0 </td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td> Start - settings<td>1381859715287</td> </td>]]>
+            </line>
+            <line>
+              <![CDATA[<td> end- settings<td>1381859718792 </td></td>]]>
+            </line>
+            <line>
+              <![CDATA[<td>Total Time 3 </td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[</tr>]]>
+            </line>
+            <line>
+              <![CDATA[</table>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td> Start - logOut<td>1381859718792</td> </td>]]>
+            </line>
+            <line>
+              <![CDATA[<td> end- logOut<td>1381859720012 </td></td>]]>
+            </line>
+            <line>
+              <![CDATA[<td>Total Time 1 </td></tr>]]>
+            </line>
+            <line>
+              <![CDATA[</tr>]]>
+            </line>
+            <line>
+              <![CDATA[</table>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- test1 -->
+      </class> <!-- utils.SamplePageTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

@@ -1,0 +1,16 @@
+public void topNavHeader() {
+		ru.setUpLog("topNavHeader");
+		ru.startLog();
+		WebElement primaryNav = BrowserUtil.driver.findElement(By.id("fs-primary-nav"));
+		List<WebElement> primaryNavElem = primaryNav.findElements(By.tagName("li"));
+
+		
+		System.out.println("list"  + primaryNavElem.listIterator());
+		for (Iterator iterator = primaryNavElem.iterator(); iterator.hasNext();) {
+			WebElement webElement = (WebElement) iterator.next();
+			System.out.println(webElement.getText());
+		}
+
+		ru.stopLog();
+		ru.endLog();
+	}
