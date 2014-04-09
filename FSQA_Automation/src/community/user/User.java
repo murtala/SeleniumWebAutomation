@@ -15,16 +15,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.google.common.util.concurrent.Service.State;
 
 import utils.BrowserUtil;
+import utils.Highlighter;
 
 public class User extends BrowserUtil {
 	static String win[] = null;
 	WebDriverWait wait = new WebDriverWait(driver, 30);
+	Highlighter h =  new Highlighter();
 	  Actions action = new Actions(driver);
 
 	// click on profile icon
 	public void fsUser() {
-		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(".//*[@id='fs-user']"))));
-		driver.findElement(By.id("fs-user")).click();
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".avatar.sm.circle"))));
+		h.highlightElement(driver.findElement(By.cssSelector(".avatar.sm.circle")));
+		driver.findElement(By.cssSelector(".avatar.sm.circle")).click();
 	}
 	
 	public void feed(){

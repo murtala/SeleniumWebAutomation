@@ -25,7 +25,7 @@ public class BrowserUtil extends Util {
 
 		/* driver paths for IE and Chrome browser */
 		String iePath = "/FSQA/Libraries/IEDriverServer_Win32_2.33.0/IEDriverServer.exe";
-		String chromePath = "/FSQA/Libraries/chromedriver_win32/chromedriver.exe";
+		String chromePath = "G:/Dev/JAVA/Libraries/chromedriver_win32/chromedriver.exe";
 
 		/*detect platform and change the correct the paths */
 		Platform current = Platform.getCurrent();
