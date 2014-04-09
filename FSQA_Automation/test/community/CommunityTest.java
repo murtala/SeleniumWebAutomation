@@ -23,7 +23,7 @@ public class CommunityTest {
 		Date date = Calendar.getInstance().getTime();
 		Login l = new Login();
 		BrowserUtil.setBrowser("ch");
-		l.authenticate("fullscreentester@gmail.com", "fullscreen!!1");
+		l.authenticate("fullscreentester@gmail.com", "");
 		User u = new User();
 		u.fsUser();
 		//u.editProfile("Robot", "011101001", "website", true, true);
