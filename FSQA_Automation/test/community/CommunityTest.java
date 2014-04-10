@@ -25,7 +25,13 @@ public class CommunityTest {
 		BrowserUtil.setBrowser("ch");
 		l.authenticate("fullscreentester@gmail.com", "");
 		User u = new User();
-		u.fsUser();
+		//u.fsUser();
+		Header h = new Header();
+		//h.homeLink();
+		SessionControls sc = new SessionControls();
+		//sc.messages();
+		//sc.notifications();
+		sc.accountControls();
 		//u.editProfile("Robot", "011101001", "website", true, true);
 		//u.editProfilePic("/Users/madamou/Dropbox/files/Ice-icon.png");
 		//u.editCover("/Users/madamou/Dropbox/files/Ice-icon.png");
@@ -60,7 +66,7 @@ public class CommunityTest {
 		//u.followers();
 		//u.following();
 		//u.about();	
-		BrowserUtil.driver.quit();
+		//BrowserUtil.driver.quit();
 	}
 
 }
