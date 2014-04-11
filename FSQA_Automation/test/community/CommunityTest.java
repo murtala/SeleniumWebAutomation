@@ -28,10 +28,13 @@ public class CommunityTest {
 		//u.fsUser();
 		Header h = new Header();
 		//h.homeLink();
-		SessionControls sc = new SessionControls();
+		//SessionControls sc = new SessionControls();
 		//sc.messages();
 		//sc.notifications();
-		sc.accountControls();
+		//sc.accountControls();
+		NotificationsModal nm = new NotificationsModal();
+		//nm.openNotifications();
+		nm.openRandomNotification();
 		//u.editProfile("Robot", "011101001", "website", true, true);
 		//u.editProfilePic("/Users/madamou/Dropbox/files/Ice-icon.png");
 		//u.editCover("/Users/madamou/Dropbox/files/Ice-icon.png");
@@ -66,7 +69,7 @@ public class CommunityTest {
 		//u.followers();
 		//u.following();
 		//u.about();	
-		//BrowserUtil.driver.quit();
+		BrowserUtil.driver.quit();
 	}
 
 }

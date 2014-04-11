@@ -11,6 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 //import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
 public class BrowserUtil extends Util {
@@ -18,7 +19,6 @@ public class BrowserUtil extends Util {
 
 	public static WebDriver driver = drivers;
 	public static Reporter reports;
-
 	public static void setBrowser(String browser) {
 		ReportUtil ru = new ReportUtil();
 		ru.startLog("setBrowser");

@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class Highlighter {
 
-	public void highlightElement(WebElement element) {
+	public static void highlightElement(WebElement element) {
 		//for (int i = 0; i < 2; i++) {
 			WebDriver driver = BrowserUtil.driver;
 			JavascriptExecutor js = (JavascriptExecutor) driver;

@@ -10,8 +10,7 @@ public class SessionControls {
 	BrowserUtil bu = new BrowserUtil();
 	WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 30);
 	Header h = new Header();
-	public void messages(){
-		
+	public void messages(){	
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li/a/span")));
 		BrowserUtil.driver.findElement(By.xpath("//li/a/span")).click();
 	}
