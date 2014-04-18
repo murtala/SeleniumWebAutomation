@@ -5,8 +5,14 @@ import static org.junit.Assert.*;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.junit.Test;
+//import org.junit.Test;
 
+
+
+
+
+import community.header.Header;
+import community.header.NotificationsModal;
 import community.home.Home;
 import community.user.About;
 import community.user.Feed;
@@ -15,15 +21,26 @@ import community.user.Following;
 import community.user.User;
 import utils.BrowserUtil;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 public class CommunityTest {
 
+	
+	 @BeforeClass
+	 public void oneTimeSetUp() {
+//	 WebDriverManager.startDriver();
+	 }
+	
+	 
+	 
 	@Test
 	public void test() {
 		// fail("Not yet implemented");
 		Date date = Calendar.getInstance().getTime();
 		Login l = new Login();
 		BrowserUtil.setBrowser("ch");
-		l.authenticate("fullscreentester@gmail.com", "");
+		l.authenticate("fullscreentester@gmail.com", "fullscreen!!1");
 		User u = new User();
 		//u.fsUser();
 		Header h = new Header();
@@ -34,7 +51,10 @@ public class CommunityTest {
 		//sc.accountControls();
 		NotificationsModal nm = new NotificationsModal();
 		//nm.openNotifications();
-		nm.openRandomNotification();
+		//nm.openRandomNotification();
+		//nm.seeAll();
+		//NotificationsPage np = new NotificationsPage();
+		//np.openRandomNotification();
 		//u.editProfile("Robot", "011101001", "website", true, true);
 		//u.editProfilePic("/Users/madamou/Dropbox/files/Ice-icon.png");
 		//u.editCover("/Users/madamou/Dropbox/files/Ice-icon.png");
@@ -69,7 +89,18 @@ public class CommunityTest {
 		//u.followers();
 		//u.following();
 		//u.about();	
-		BrowserUtil.driver.quit();
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
 	}
-
+	 @AfterClass
+	 public void oneTimeTearDown() {
+		 BrowserUtil.driver.quit();
+	 }
 }

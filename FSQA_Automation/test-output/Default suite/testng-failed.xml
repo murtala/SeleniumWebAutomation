@@ -3,11 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="utils.SamplePageTest">
+      <class name="community.CommunityTest">
         <methods>
-          <include name="test1"/>
+          <include name="oneTimeTearDown"/>
+          <include name="test"/>
+          <include name="oneTimeSetUp"/>
         </methods>
-      </class> <!-- utils.SamplePageTest -->
+      </class> <!-- community.CommunityTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

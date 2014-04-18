@@ -1,4 +1,4 @@
-package community;
+package community.header;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
