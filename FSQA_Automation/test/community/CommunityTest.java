@@ -11,6 +11,10 @@ import java.util.Date;
 
 
 
+
+
+import community.footer.Footer;
+import community.header.AccountControls;
 import community.header.Header;
 import community.header.NotificationsModal;
 import community.home.Home;
@@ -40,7 +44,7 @@ public class CommunityTest {
 		Date date = Calendar.getInstance().getTime();
 		Login l = new Login();
 		BrowserUtil.setBrowser("ch");
-		l.authenticate("fullscreentester@gmail.com", "");
+		l.authenticate("fullscreentester@gmail.com", "fullscreen!!1");
 		User u = new User();
 		//u.fsUser();
 		Header h = new Header();
@@ -49,12 +53,28 @@ public class CommunityTest {
 		//sc.messages();
 		//sc.notifications();
 		//sc.accountControls();
-		NotificationsModal nm = new NotificationsModal();
+		//NotificationsModal nm = new NotificationsModal();
 		//nm.openNotifications();
 		//nm.openRandomNotification();
 		//nm.seeAll();
 		//NotificationsPage np = new NotificationsPage();
 		//np.openRandomNotification();
+		//np.paginationLinks();
+		
+		//AccountControls ac = new AccountControls();
+		//ac.user();
+		//ac.editProfile();
+		//ac.help();
+		//ac.settings();
+		//ac.logOut();  //will not work if outsde coommunity cuz mouse click becomes mouse over
+		
+		Footer f = new Footer();
+		
+		//f.mobileLink();
+		//f.helpCenterLink();
+		//f.moreLinks();
+		f.selectLanguages();
+		
 		//u.editProfile("Robot", "011101001", "website", true, true);
 		//u.editProfilePic("/Users/madamou/Dropbox/files/Ice-icon.png");
 		//u.editCover("/Users/madamou/Dropbox/files/Ice-icon.png");

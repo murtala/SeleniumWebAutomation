@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class Highlighter {
 
+	//does not work with linktext locators
 	public static void highlightElement(WebElement element) {
 		//for (int i = 0; i < 2; i++) {
 			WebDriver driver = BrowserUtil.driver;
