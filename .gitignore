@@ -1,1 +1,11 @@
 FSQA_Automation/test/community/CommunityTest.java
+FSQA_Automation/test-output/testng-results.xml
+FSQA_Automation/test-output/Default suite/Default test.html
+FSQA_Automation/test-output/Default suite/Default test.xml
+FSQA_Automation/test-output/emailable-report.html
+FSQA_Automation/test-output/index.html
+FSQA_Automation/test-output/junitreports/TEST-community.CommunityTest.xml
+FSQA_Automation/test-output/old/Default suite/methods-alphabetical.html
+FSQA_Automation/test-output/old/Default suite/methods.html
+*.xml
+*.html

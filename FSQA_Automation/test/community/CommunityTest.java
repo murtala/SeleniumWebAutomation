@@ -44,19 +44,21 @@ public class CommunityTest {
 		Date date = Calendar.getInstance().getTime();
 		Login l = new Login();
 		BrowserUtil.setBrowser("ch");
-		l.authenticate("fullscreentester@gmail.com", "fullscreen!!1");
-		User u = new User();
-		//u.fsUser();
-		Header h = new Header();
+		l.authenticate("tester@fullscreen.net", "fullscreen!!1");
+		
+		//Header h = new Header();
 		//h.homeLink();
+		
 		//SessionControls sc = new SessionControls();
 		//sc.messages();
 		//sc.notifications();
 		//sc.accountControls();
+		
 		//NotificationsModal nm = new NotificationsModal();
 		//nm.openNotifications();
 		//nm.openRandomNotification();
 		//nm.seeAll();
+		
 		//NotificationsPage np = new NotificationsPage();
 		//np.openRandomNotification();
 		//np.paginationLinks();
@@ -68,16 +70,17 @@ public class CommunityTest {
 		//ac.settings();
 		//ac.logOut();  //will not work if outsde coommunity cuz mouse click becomes mouse over
 		
-		Footer f = new Footer();
-		
+		//Footer f = new Footer();
 		//f.mobileLink();
 		//f.helpCenterLink();
 		//f.moreLinks();
-		f.selectLanguages();
+		//f.selectLanguages();
 		
-		//u.editProfile("Robot", "011101001", "website", true, true);
-		//u.editProfilePic("/Users/madamou/Dropbox/files/Ice-icon.png");
-		//u.editCover("/Users/madamou/Dropbox/files/Ice-icon.png");
+		User u = new User();
+		u.fsUser();
+		//u.editProfile("Robot", "011101001", "website","slug", true, true);
+		//u.editProfilePic("//FSQA_Automation//src//community//user//388135main_PIA11667_full.jpg");
+		u.editCover("//FSQA_Automation//src//community//user//388135main_PIA11667_full.jpg");
 		//u.profileWebsite();
 		//u.twitterNickname();
 		//u.editBio("put bio description here");

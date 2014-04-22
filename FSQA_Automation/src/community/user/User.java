@@ -15,6 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.google.common.util.concurrent.Service.State;
 
 import utils.BrowserUtil;
+import utils.CustomFinder;
 import utils.Highlighter;
 
 public class User extends BrowserUtil {
@@ -25,9 +26,9 @@ public class User extends BrowserUtil {
 
 	// click on profile icon
 	public void fsUser() {
-		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".avatar.sm.circle"))));
-		h.highlightElement(driver.findElement(By.cssSelector(".avatar.sm.circle")));
-		driver.findElement(By.cssSelector(".avatar.sm.circle")).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='fs-application-wrapper']/nav/div/a")));
+		//h.highlightElement(driver.findElement(By.cssSelector(".avatar.sm.circle")));
+		driver.findElement(By.xpath(".//*[@id='fs-application-wrapper']/nav/div/a")).click();
 	}
 	
 	public void feed(){
@@ -68,9 +69,10 @@ public class User extends BrowserUtil {
 	
 	public void editCover(String path) {
 		editProfile();
-		driver.findElement(By.xpath(".//input[@class='banner-file-select']")).sendKeys(path);
+	//	driver.findElement(By.xpath(".//input[@class='banner-file-select']")).sendKeys(path);
+		driver.findElement(By.xpath(".//input[@class='banner-file-picker']")).sendKeys(path);
 		//click save cover button
-		driver.findElement(By.xpath(".//a[@class='profile-btn edit-btn save-btn cancel ng-binding']")).click();;
+		driver.findElement(By.xpath(".//button[@class='fs-button sm banner-save ng-binding']")).click();;
 		doneEditing();
 	}
 	public void editBio(String bio){
@@ -143,13 +145,15 @@ public class User extends BrowserUtil {
 		 
 	}
 
-	public void editProfile(String name, String location, String website, boolean colab, boolean hire ) {
-		editProfile();	
-		// click pen icon
-		driver.findElement(By.cssSelector("button.edit-profile-form-trigger")).click();
+	public void editProfile(String name, String location, String website, String slug, boolean colab, boolean hire ) {
+		//editProfile();	
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//div[@class='profile-edit-actions']")));
 
+		// click pen icon
+		driver.findElement(By.xpath(".//div[@class='profile-edit-actions']")).click();
 		// Edit name
-		driver.findElement(By.id("edit-profile-name")).clear();
+		driver.findElement(By.xpath(".//button[@class='edit-profile-form-trigger']")).click();;
+		driver.findElement(By.xpath("//input[@id='edit-profile-name']")).clear();
 		
 		driver.findElement(By.id("edit-profile-name")).sendKeys(name);
 		// edit location
@@ -161,44 +165,50 @@ public class User extends BrowserUtil {
 		// edit web site
 		driver.findElement(By.id("edit-profile-website")).clear();
 		driver.findElement(By.id("edit-profile-website")).sendKeys(website);
-
+		
+		// edit profile url
+				driver.findElement(By.id("edit-slug")).clear();
+				driver.findElement(By.id("edit-slug")).sendKeys(slug);
 		JavascriptExecutor jsx = (JavascriptExecutor)driver;
 
 		// edit collaboration
 		if (colab == true) {
-			Object state = jsx.executeScript(" return document.getElementById('edit-profile-collaboration').checked");
+			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='edit-profile-collaboration']")));
+			boolean state = driver.findElement(By.id("edit-profile-collaboration")).isSelected();
+			//Object state = jsx.executeScript(" return document.getElementById('edit-profile-collaboration').checked");
 
-			if (state.toString().equalsIgnoreCase("true")) {
+			if (state == true) {
 
 			} else {
-				driver.findElement(By.xpath(".//label[.=' Available for collaboration']")).click();
+				driver.findElement(By.id("edit-profile-collaboration")).click();
 			}
 		}
 		if (colab == false) {
-			Object state = jsx.executeScript(" return document.getElementById('edit-profile-collaboration').checked");
-
-			if (state.toString().equalsIgnoreCase("false")) {
+			//Object state = jsx.executeScript(" return document.getElementById('edit-profile-collaboration').checked");
+			boolean state = driver.findElement(By.id("edit-profile-collaboration")).isSelected();
+			if (state == false) {
 
 			} else {
-				driver.findElement(By.xpath(".//label[.=' Available for collaboration']")).click();
+				driver.findElement(By.id("edit-profile-collaboration")).click();
 			}
 		}
 		// edit for hire
 		if (hire == true) {
-			Object state = jsx.executeScript(" return document.getElementById('edit-profile-hire').checked");
-			if (state.toString().equalsIgnoreCase("true")) {
+			boolean state = driver.findElement(By.id("edit-profile-hire")).isSelected();
+			if (state == true) {
 			}
 
 		} else {
-			driver.findElement(By.xpath(".//label[.=' Available for hire']")).click();
+			driver.findElement(By.id("edit-profile-hire")).click();
 		}
 		if (hire == false) {
-			Object state = jsx.executeScript(" return document.getElementById('edit-profile-hire').checked");
-			if (state.toString().equalsIgnoreCase("false")) {
+			boolean state = driver.findElement(By.id("edit-profile-hire")).isSelected();
+			if (state == false) {
 			}
 
 		} else {
-			driver.findElement(By.xpath(".//label[.=' Available for hire']")).click();
+			driver.findElement(By.id("edit-profile-hire")).click();
 		}
 		
 		save();
