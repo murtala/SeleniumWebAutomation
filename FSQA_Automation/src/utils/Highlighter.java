@@ -15,4 +15,11 @@ public class Highlighter {
 			//js.executeScript("arguments[0].setAttribute('style', arguments[1]);", element, "");
 		//}
 	}
+
+	public static void highlightElement(String element) {
+		WebDriver driver = BrowserUtil.driver;
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].setAttribute('style', arguments[1]);", element, "background-color: yellow; outline : 1px solid rgb(136, 255, 136);");
+		//js.executeScript("arguments[0].setAttribute('style', arguments[1]);", element, "");		
+	}
 }

@@ -1,12 +1,15 @@
 package community.home;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.BrowserUtil;
+import utils.Randomizer;
 
 public class Home {
 static WebDriver driver = BrowserUtil.driver;
@@ -22,10 +25,17 @@ public String menuXpathLoc(String path){
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='menu-home']")));
 		BrowserUtil.driver.findElement(By.xpath(".//*[@id='menu-home']")).click();
 	}
-	public void home(){
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(menuXpathLoc("Home"))));
-		driver.findElement(By.xpath(menuXpathLoc("Home"))).click();
+	//play a random video from the list
+	public void playFeaturedVideos(){
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@class='featured-videos clearfix']")));
+		WebElement allVideos = BrowserUtil.driver.findElement(By.xpath(".//*[@class='featured-videos clearfix']"));
+		List<WebElement> vids = allVideos.findElements(By.tagName("span"));
+		Randomizer r = new Randomizer();
+		r.randomClick(vids);
+		
+		
 	}
+	
 	public void earnings(){
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(menuXpathLoc("Earnings"))));
 		driver.findElement(By.xpath(menuXpathLoc("Earnings"))).click();

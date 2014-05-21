@@ -2,10 +2,18 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/ChromeDriver"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Selenium"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/TestNG_6_8_6_20130607__0745"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JUnit4_11"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="/Users/madamou/Documents/selenium-2.41.0/libs/testng-6.8.6.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://testng.org/javadocs/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="/Users/madamou/Documents/selenium-2.41.0/selenium-java-2.41.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://selenium.googlecode.com/git/docs/api/java/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/ChromeDriver"/>
+	<classpathentry kind="lib" path="/Users/madamou/Documents/selenium-2.41.0/selenium-server-standalone-2.41.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -13,6 +13,7 @@ import java.util.Date;
 
 
 
+
 import community.footer.Footer;
 import community.header.AccountControls;
 import community.header.Header;
@@ -22,6 +23,7 @@ import community.user.About;
 import community.user.Feed;
 import community.user.Followers;
 import community.user.Following;
+//import community.user.Status;
 import community.user.User;
 import utils.BrowserUtil;
 
@@ -43,7 +45,7 @@ public class CommunityTest {
 		// fail("Not yet implemented");
 		Date date = Calendar.getInstance().getTime();
 		Login l = new Login();
-		BrowserUtil.setBrowser("ch");
+		BrowserUtil.setBrowser("ff");
 		l.authenticate("tester@fullscreen.net", "fullscreen!!1");
 		
 		//Header h = new Header();
@@ -51,7 +53,7 @@ public class CommunityTest {
 		
 		//SessionControls sc = new SessionControls();
 		//sc.messages();
-		//sc.notifications();
+		//sc.notifications();fff
 		//sc.accountControls();
 		
 		//NotificationsModal nm = new NotificationsModal();
@@ -76,18 +78,25 @@ public class CommunityTest {
 		//f.moreLinks();
 		//f.selectLanguages();
 		
-		User u = new User();
-		u.fsUser();
+		//User u = new User();
+		//u.fsUser();
 		//u.editProfile("Robot", "011101001", "website","slug", true, true);
 		//u.editProfilePic("//FSQA_Automation//src//community//user//388135main_PIA11667_full.jpg");
-		u.editCover("//FSQA_Automation//src//community//user//388135main_PIA11667_full.jpg");
+		//***********************u.editCover("//FSQA_Automation//src//community//user//388135main_PIA11667_full.jpg");
 		//u.profileWebsite();
 		//u.twitterNickname();
 		//u.editBio("put bio description here");
+		//u.addExpertise("gamer"); ************
+		//u.removeExpertise("game");***********************
+		//u.sidebarGroups();
+		//u.sidebarChannel();
 		//u.feed();
 		//Feed f = new Feed();
 		//f.post(date.toString());
-        //f.comment(date.toString());
+     //   f.comment("This is a comment : " + date.toString());
+	//	f.activityFilter("");
+      //  f.activityFilter("Milestones");    // use: All, Status Posts, Video Uploads, Forums, Milestones
+		//f.hidePost();
 		//f.likePost();
 		//f.likeUnlikePost();
 		//f.likeComment();
@@ -97,12 +106,16 @@ public class CommunityTest {
 		//f.UnsubscribePost(); 
 		//u.followers();
 		//Followers fo = new Followers();
+		//fo.followUnfollow();
+		//fo.userList();
 		//fo.unFollow();
 		//fo.message();
-		//Following f1 = new Following();
-		//f1.message();
+		
 		//About ab = new About();
-	//	Home h = new Home();
+		//ab.clickTags();
+		
+		Home h = new Home();
+		h.playFeaturedVideos();
 		
 		//f.reportPost();  // not ready
 		//u.linkTwitter("fsqa01", "fstester");
@@ -124,6 +137,6 @@ public class CommunityTest {
 	}
 	 @AfterClass
 	 public void oneTimeTearDown() {
-		 BrowserUtil.driver.quit();
+		// BrowserUtil.driver.quit();
 	 }
 }

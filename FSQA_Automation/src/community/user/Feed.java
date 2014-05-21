@@ -1,6 +1,7 @@
 package community.user;
 
 import java.util.List;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -8,15 +9,35 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.BrowserUtil;
 import utils.Highlighter;
 
 public class Feed  {
-
 	WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 60);
+	public Feed(){
+		System.out.println("Opening Feed Tab");
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='fs-application-wrapper']/nav/div/a")));
+		//h.highlightElement(driver.findElement(By.cssSelector(".avatar.sm.circle")));
+		BrowserUtil.driver.findElement(By.xpath(".//*[@id='fs-application-wrapper']/nav/div/a")).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Feed']")));
+		BrowserUtil.driver.findElement(By.xpath("//a[text()='Feed']")).click();
+	}
+	
 
+	//select from the drop down. arguments are : All, "Status Posts", "Video Uploads, "Forums", "Milestones"
+	public void activityFilter(String by){
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//ul[@class='dropdown-menu bottom']")));
+		Actions action = new Actions(BrowserUtil.driver);
+		action.click(BrowserUtil.driver.findElement(By.xpath(".//*[@id='fs-application-wrapper']/div[3]/div[2]/div[1]/div[2]/div/div[1]/div/div[1]/div/a/span")));
+		action.build().perform();
+		action.moveToElement(BrowserUtil.driver.findElement(By.xpath("//a[text()='"+by+"']")));
+		action.click();
+		action.build().perform();
+		
+	}
 	public void post(String someText){
 		
 		wait.until(ExpectedConditions.visibilityOf(BrowserUtil.driver.findElement(By.xpath("//div[@class='fs-content-main']"))));		
@@ -29,25 +50,35 @@ public class Feed  {
 		BrowserUtil.driver.findElement(By.xpath("//div/button")).click();
 	}
 	
+	//post a comment on a random post
 	public void comment(String comment) { //not ready
 		wait.until(ExpectedConditions.visibilityOf(BrowserUtil.driver.findElement(By.xpath("//div[@class='activity-feed']"))));
-		
-		System.out.println(BrowserUtil.driver.getTitle());
-		
-		Actions action = new Actions(BrowserUtil.driver);
-		 				
-		JavascriptExecutor jsx = (JavascriptExecutor)BrowserUtil.driver;
-		jsx.executeScript("window.scrollBy(0,300)", "");
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		WebElement allPosts = BrowserUtil.driver.findElement(By.xpath("//div[@class='activity-feed']"));
+		List<WebElement> commentFields = allPosts.findElements(By.name("commentForm"));
+				
+		WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 30);
+				
+		Random r = new Random();
+		int ran;
+		WebElement listItem;
+		if(commentFields.size() == 1){
+			 ran = 1;
+			  listItem = commentFields.get((0));
+		}else{
+		 ran = r.nextInt(commentFields.size());
+		  listItem = commentFields.get(r.nextInt(ran));
+			
 		}
-		BrowserUtil.driver.findElement(By.xpath(".//*[@id='fs-page-container']//activity-feed/div/activity-feed-item[1]//comment-list/comment-form/form/textarea")).click();;
-		BrowserUtil.driver.findElement(By.xpath(".//*[@id='fs-page-container']//activity-feed/div/activity-feed-item[1]//comment-list/comment-form/form/textarea")).sendKeys(comment);;;
-		BrowserUtil.driver.findElement(By.xpath(".//*[@id='fs-page-container']//activity-feed/div/activity-feed-item[1]//comment-list/comment-form/form/textarea")).sendKeys(Keys.ENTER);;;
-	}
+		
+		
+		WebElement listedItem = listItem.findElement(By.tagName("textarea"));
+		BrowserUtil.scrollToElement(listedItem);
+		listedItem.click();
+		listedItem.sendKeys(comment);
+		listedItem.sendKeys(Keys.ENTER);
+
+		
+		}
 	
 	
 	public void likeComment() { // make sure a comment exist first before using
@@ -143,45 +174,45 @@ public class Feed  {
 		JavascriptExecutor jsx = (JavascriptExecutor)BrowserUtil.driver;
 		jsx.executeScript("window.scrollBy(0,100)", "");
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='activity-item-like']//span[contains(@class,'active' )]")));
-		BrowserUtil.driver.findElement(By.xpath("//div[@class='activity-item-like']//span[contains(@class,'active' )]")).click();		
+		BrowserUtil.driver.findElement(By.xpath("//div[@class='activity-item-like']")).click();		
 	}
 	
 	public void timeStampPermaLink(){ // click on perma link
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@class='media-activity-header-timestamp permalink ng-binding']")));
-		BrowserUtil.driver.findElement(By.xpath("//a[@class='media-activity-header-timestamp permalink ng-binding']")).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@class='media-timestamp permalink ng-binding']")));
+		BrowserUtil.driver.findElement(By.xpath("//a[@class='media-timestamp permalink ng-binding']")).click();
 	}
 	
 	public void hidePost() {
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='dropdown popover activity-item-actions ng-scope']")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//div[@class='dropdown popover activity-item-actions ng-scope']/a")));
 		//click on the icon
-		BrowserUtil.driver.findElement(By.xpath("//*[@class='dropdown popover activity-item-actions ng-scope']")).click();
+		BrowserUtil.driver.findElement(By.xpath(".//div[@class='dropdown popover activity-item-actions ng-scope']/a")).click();
 		//click hide on the pop over
-		BrowserUtil.driver.findElement(By.linkText("Hide")).click();;
+		BrowserUtil.driver.findElement(By.linkText("Remove")).click();;
 	}
 	
 	public void UnsubscribePost() {
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='dropdown popover activity-item-actions ng-scope']")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//div[@class='dropdown popover activity-item-actions ng-scope']/a")));
 		//click on the icon
-		BrowserUtil.driver.findElement(By.xpath("//*[@class='dropdown popover activity-item-actions ng-scope']")).click();
+		BrowserUtil.driver.findElement(By.xpath(".//div[@class='dropdown popover activity-item-actions ng-scope']/a")).click();
 		//click unsub on the pop over
 		BrowserUtil.driver.findElement(By.linkText("Unsubscribe")).click();;
 		
 	}
 	
 	public void reportPost() { //cannot report in feed. only in home
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='dropdown popover activity-item-actions ng-scope']")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//div[@class='dropdown popover activity-item-actions ng-scope']/a")));
 		//click on the icon
-		BrowserUtil.driver.findElement(By.xpath("//*[@class='dropdown popover activity-item-actions ng-scope']")).click();
+		BrowserUtil.driver.findElement(By.xpath(".//div[@class='dropdown popover activity-item-actions ng-scope']/a")).click();
 		//click hide on the pop over
-		BrowserUtil.driver.findElement(By.linkText("report")).click();;
+		BrowserUtil.driver.findElement(By.linkText("Report")).click();;
 	}
 	
 	public void reportComment() {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='activity-item-interact']//div[@class='dropdown popover activity-item-actions ng-scope']")));
 		//click on the icon
-		BrowserUtil.driver.findElement(By.xpath("//*[@class='dropdown popover activity-item-actions ng-scope']")).click();
+		BrowserUtil.driver.findElement(By.xpath(".//div[@class='dropdown popover activity-item-actions ng-scope']/a")).click();
 		//click hide on the pop over
-		BrowserUtil.driver.findElement(By.linkText("report()")).click();;
+		BrowserUtil.driver.findElement(By.linkText("Report")).click();;
 		
 	}
 	

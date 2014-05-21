@@ -69,6 +69,10 @@ public class BrowserUtil extends Util {
 		JavascriptExecutor jsx = (JavascriptExecutor) BrowserUtil.driver;
 		jsx.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
+	public static void scrollToElement(String element) {
+		JavascriptExecutor jsx = (JavascriptExecutor) BrowserUtil.driver;
+		jsx.executeScript("arguments[0].scrollIntoView(true);", element);
+	}
 	/* go to a specified URL */
 	public void navigateTo(String url) {
 		driver.navigate().to(url);
