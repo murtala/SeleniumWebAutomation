@@ -1,26 +1,13 @@
 package community;
 
-import static org.junit.Assert.*;
-import groups.Groups;
+//import static org.junit.Assert.*;
+import groups.GroupsHome;
 
 import java.util.Calendar;
 import java.util.Date;
 
 //import org.junit.Test;
 
-
-
-import community.footer.Footer;
-import community.header.AccountControls;
-import community.header.Header;
-import community.header.NotificationsModal;
-import community.home.Home;
-import community.user.About;
-import community.user.Feed;
-import community.user.Followers;
-import community.user.Following;
-//import community.user.Status;
-import community.user.User;
 import utils.BrowserUtil;
 
 import org.testng.annotations.AfterClass;
@@ -44,8 +31,15 @@ public class CommunityTest {
 		BrowserUtil.setBrowser("chrome");
 		l.authenticate("tester@fullscreen.net", "fullscreen!!1");
 		
-		Groups g = new Groups();
+		GroupsHome g = new GroupsHome();
 		g.createGroup( date.toString(), date.toString(), "Closed", true, false);
+		//g.allGroupsTab();
+		//g.allUavatar();
+		//g.ranMPgroup();
+		//g.ranNewgroup();
+		//g.ranUserAvatar();
+		//g.searchGroup("beauty");
+		//g.youGroupsTab();
 		//Header h = new Header();
 		//h.homeLink();
 		
@@ -79,6 +73,19 @@ public class CommunityTest {
 		//User u = new User();
 		//u.fsUser();
 		//u.editProfile("Robot", "011101001", "website","slug", true, true);
+
+		//u.editProfilePic("G:\\Users\\Moortala\\Documents\\GitHub\\SeleniumWebAutomation\\FSQA_Automation\\src\\community\\user\\388135main_PIA11667_full.jpg");
+		//u.editCover("G:\\Users\\Moortala\\Documents\\GitHub\\SeleniumWebAutomation\\FSQA_Automation\\src\\community\\user\\388135main_PIA11667_full.jpg");
+		//u.profileWebsite();
+		//u.twitterNickname();
+		//u.editBio("put bio description here");
+		//u.addExpertise("musical");
+	//	u.addExpertise("music interpreter");
+		//u.addExpertise("music arranger");
+		//u.removeExpertise("musical");
+
+		
+		//on mac
 		//u.editProfilePic("//FSQA_Automation//src//community//user//388135main_PIA11667_full.jpg");
 		//***********************u.editCover("//FSQA_Automation//src//community//user//388135main_PIA11667_full.jpg");
 		//u.profileWebsite();
@@ -88,6 +95,7 @@ public class CommunityTest {
 		//u.removeExpertise("game");***********************
 		//u.sidebarGroups();
 		//u.sidebarChannel();
+
 		//u.feed();
 		//Feed f = new Feed();
 		//f.post(date.toString());

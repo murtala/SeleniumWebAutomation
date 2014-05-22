@@ -37,10 +37,8 @@ FSQA_Automation/test-output/old/index.html
 
 FSQA_Automation/test-output/testng-failed.xml
 
-FSQA_Automation/test-output/testng-results.xml
-
 FSQA_Automation/src/.DS_Store
-
 FSQA_Automation/.DS_Store
-
 FSQA_Automation/test/.DS_Store
+FSQA_Automation/.classpath
+

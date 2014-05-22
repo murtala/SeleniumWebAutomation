@@ -8,25 +8,25 @@
       <![CDATA[<tr><th>MODULE</th><th>TIME</th><th>MODULE</th><th>TIME</th><th>TOTAL TIME</th></tr>]]>
     </line>
     <line>
-      <![CDATA[<tr><td> Start - setBrowser<td>1400719076034</td> </td>]]>
+      <![CDATA[<tr><td> Start - setBrowser<td>1400729687851</td> </td>]]>
     </line>
     <line>
-      <![CDATA[<td> end- setBrowser<td>1400719078447 </td></td>]]>
+      <![CDATA[<td> end- setBrowser<td>1400729690684 </td></td>]]>
     </line>
     <line>
       <![CDATA[<td>Total Time 2 </td></tr>]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="26567" started-at="2014-05-22T00:37:55Z" finished-at="2014-05-22T00:38:22Z">
+  <suite name="Default suite" duration-ms="76196" started-at="2014-05-22T03:34:47Z" finished-at="2014-05-22T03:36:03Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="26567" started-at="2014-05-22T00:37:55Z" finished-at="2014-05-22T00:38:22Z">
+    <test name="Default test" duration-ms="76196" started-at="2014-05-22T03:34:47Z" finished-at="2014-05-22T03:36:03Z">
       <class name="community.CommunityTest">
-        <test-method status="PASS" signature="oneTimeSetUp()[pri:0, instance:community.CommunityTest@22a71081]" name="oneTimeSetUp" is-config="true" duration-ms="12" started-at="2014-05-21T17:37:56Z" finished-at="2014-05-21T17:37:56Z">
+        <test-method status="PASS" signature="oneTimeSetUp()[pri:0, instance:community.CommunityTest@52988584]" name="oneTimeSetUp" is-config="true" duration-ms="6" started-at="2014-05-21T20:34:47Z" finished-at="2014-05-21T20:34:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- oneTimeSetUp -->
-        <test-method status="PASS" signature="test()[pri:0, instance:community.CommunityTest@22a71081]" name="test" duration-ms="25972" started-at="2014-05-21T17:37:56Z" finished-at="2014-05-21T17:38:21Z">
+        <test-method status="PASS" signature="test()[pri:0, instance:community.CommunityTest@52988584]" name="test" duration-ms="74985" started-at="2014-05-21T20:34:47Z" finished-at="2014-05-21T20:36:02Z">
           <reporter-output>
             <line>
               <![CDATA[<table border='1'><tr>]]>
@@ -35,17 +35,17 @@
               <![CDATA[<tr><th>MODULE</th><th>TIME</th><th>MODULE</th><th>TIME</th><th>TOTAL TIME</th></tr>]]>
             </line>
             <line>
-              <![CDATA[<tr><td> Start - setBrowser<td>1400719076034</td> </td>]]>
+              <![CDATA[<tr><td> Start - setBrowser<td>1400729687851</td> </td>]]>
             </line>
             <line>
-              <![CDATA[<td> end- setBrowser<td>1400719078447 </td></td>]]>
+              <![CDATA[<td> end- setBrowser<td>1400729690684 </td></td>]]>
             </line>
             <line>
               <![CDATA[<td>Total Time 2 </td></tr>]]>
             </line>
           </reporter-output>
         </test-method> <!-- test -->
-        <test-method status="PASS" signature="oneTimeTearDown()[pri:0, instance:community.CommunityTest@22a71081]" name="oneTimeTearDown" is-config="true" duration-ms="564" started-at="2014-05-21T17:38:21Z" finished-at="2014-05-21T17:38:22Z">
+        <test-method status="PASS" signature="oneTimeTearDown()[pri:0, instance:community.CommunityTest@52988584]" name="oneTimeTearDown" is-config="true" duration-ms="1174" started-at="2014-05-21T20:36:02Z" finished-at="2014-05-21T20:36:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- oneTimeTearDown -->
