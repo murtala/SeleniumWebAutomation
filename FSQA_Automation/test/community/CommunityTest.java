@@ -1,16 +1,12 @@
 package community;
 
 import static org.junit.Assert.*;
+import groups.Groups;
 
 import java.util.Calendar;
 import java.util.Date;
 
 //import org.junit.Test;
-
-
-
-
-
 
 
 
@@ -45,9 +41,11 @@ public class CommunityTest {
 		// fail("Not yet implemented");
 		Date date = Calendar.getInstance().getTime();
 		Login l = new Login();
-		BrowserUtil.setBrowser("ff");
+		BrowserUtil.setBrowser("chrome");
 		l.authenticate("tester@fullscreen.net", "fullscreen!!1");
 		
+		Groups g = new Groups();
+		g.createGroup( date.toString(), date.toString(), "Closed", true, false);
 		//Header h = new Header();
 		//h.homeLink();
 		
@@ -114,8 +112,20 @@ public class CommunityTest {
 		//About ab = new About();
 		//ab.clickTags();
 		
-		Home h = new Home();
-		h.playFeaturedVideos();
+		//Home h = new Home();
+		//h.playFeaturedVideos(); //********************** work on playing next after 30 secs
+		//h.post("This is a Status Post : " + date.toString());
+		//h.everyoneTab();
+		//h.myFeedTab();
+		//h.changeFilterTo("Milestones");
+		//h.rsSimCreator();
+		//h.rsFUCreator();
+		//h.rsBlogLink();  //************ to be completed
+		//h.rsBlogLinkTag();  // //************ to be completed
+		//h.postComment("yoyoy"); //**** not working
+		//h.rateComment();
+		//h.ratePost();
+		
 		
 		//f.reportPost();  // not ready
 		//u.linkTwitter("fsqa01", "fstester");
@@ -126,7 +136,7 @@ public class CommunityTest {
 		//u.following();
 		//u.about();	
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -137,6 +147,7 @@ public class CommunityTest {
 	}
 	 @AfterClass
 	 public void oneTimeTearDown() {
-		// BrowserUtil.driver.quit();
+		
+		BrowserUtil.driver.quit();
 	 }
 }

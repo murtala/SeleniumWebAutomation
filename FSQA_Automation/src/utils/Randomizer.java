@@ -14,14 +14,14 @@ public class Randomizer {  // in works
 		//WebElement Parent = BrowserUtil.driver.findElement(By.tagName("tbody"));
 		//List<WebElement> list = Parent.findElements(By.tagName("tr"));
 		Random r = new Random();
-		int ran;
+		int  ran = r.nextInt(list.size())+1;
 		WebElement listItem;
-		System.out.println(list.size());
+		System.out.println("ran: " +ran + " size: "+list.size());
 		if(list.size() == 1 || list.size() == 0){
 			 ran = 1;
 			  listItem = list.get((0));
 		}else{
-		 ran = r.nextInt(list.size());
+		 
 		  listItem = list.get(r.nextInt(ran));
 		}
 		

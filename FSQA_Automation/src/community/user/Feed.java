@@ -16,7 +16,7 @@ import utils.BrowserUtil;
 import utils.Highlighter;
 
 public class Feed  {
-	WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 60);
+	WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 30);
 	public Feed(){
 		System.out.println("Opening Feed Tab");
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='fs-application-wrapper']/nav/div/a")));
