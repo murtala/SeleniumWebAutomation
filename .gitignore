@@ -38,3 +38,11 @@ FSQA_Automation/test-output/old/index.html
 FSQA_Automation/test-output/testng-failed.xml
 
 FSQA_Automation/test-output/testng-results.xml
+FSQA_Automation/.classpath
+FSQA_Automation/.classpath
+FSQA_Automation/test-output/Default suite/Default test.html
+FSQA_Automation/test-output/Default suite/Default test.xml
+FSQA_Automation/test-output/emailable-report.html
+FSQA_Automation/test-output/index.html
+*.xml
+*.html
