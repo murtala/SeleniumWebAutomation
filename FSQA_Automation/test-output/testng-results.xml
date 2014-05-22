@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
@@ -96,3 +97,60 @@ Driver info: driver.version: unknown
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[<table border='1'><tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><th>MODULE</th><th>TIME</th><th>MODULE</th><th>TIME</th><th>TOTAL TIME</th></tr>]]>
+    </line>
+    <line>
+      <![CDATA[<tr><td> Start - setBrowser<td>1400719076034</td> </td>]]>
+    </line>
+    <line>
+      <![CDATA[<td> end- setBrowser<td>1400719078447 </td></td>]]>
+    </line>
+    <line>
+      <![CDATA[<td>Total Time 2 </td></tr>]]>
+    </line>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="26567" started-at="2014-05-22T00:37:55Z" finished-at="2014-05-22T00:38:22Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="26567" started-at="2014-05-22T00:37:55Z" finished-at="2014-05-22T00:38:22Z">
+      <class name="community.CommunityTest">
+        <test-method status="PASS" signature="oneTimeSetUp()[pri:0, instance:community.CommunityTest@22a71081]" name="oneTimeSetUp" is-config="true" duration-ms="12" started-at="2014-05-21T17:37:56Z" finished-at="2014-05-21T17:37:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- oneTimeSetUp -->
+        <test-method status="PASS" signature="test()[pri:0, instance:community.CommunityTest@22a71081]" name="test" duration-ms="25972" started-at="2014-05-21T17:37:56Z" finished-at="2014-05-21T17:38:21Z">
+          <reporter-output>
+            <line>
+              <![CDATA[<table border='1'><tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><th>MODULE</th><th>TIME</th><th>MODULE</th><th>TIME</th><th>TOTAL TIME</th></tr>]]>
+            </line>
+            <line>
+              <![CDATA[<tr><td> Start - setBrowser<td>1400719076034</td> </td>]]>
+            </line>
+            <line>
+              <![CDATA[<td> end- setBrowser<td>1400719078447 </td></td>]]>
+            </line>
+            <line>
+              <![CDATA[<td>Total Time 2 </td></tr>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- test -->
+        <test-method status="PASS" signature="oneTimeTearDown()[pri:0, instance:community.CommunityTest@22a71081]" name="oneTimeTearDown" is-config="true" duration-ms="564" started-at="2014-05-21T17:38:21Z" finished-at="2014-05-21T17:38:22Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- oneTimeTearDown -->
+      </class> <!-- community.CommunityTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
+>>>>>>> 9bdcaf299b59800fa6196cfde874dc5856eb84e3

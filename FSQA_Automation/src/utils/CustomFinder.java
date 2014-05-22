@@ -9,6 +9,8 @@ public class CustomFinder {
 
 	public static void locateXpath(String xpath, boolean highlight, boolean log) {
 		WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 60);
+		
+		
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
 		BrowserUtil.scrollToElement(BrowserUtil.driver.findElement(By.xpath(xpath)));
 		BrowserUtil.driver.findElement(By.xpath(xpath)).click();
@@ -25,7 +27,7 @@ public class CustomFinder {
 	public static void locateLinkText(String linkText, boolean highlight,
 			boolean log) {
 		WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 60);
-		wait.until(ExpectedConditions.elementToBeClickable(By.linkText(linkText)));
+	//	wait.until(ExpectedConditions.elementToBeClickable(By.linkText(linkText)));
 		BrowserUtil.scrollToElement(BrowserUtil.driver.findElement(By.linkText(linkText)));
 		BrowserUtil.driver.findElement(By.linkText(linkText)).click();
 

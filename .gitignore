@@ -9,3 +9,32 @@ FSQA_Automation/test-output/old/Default suite/methods-alphabetical.html
 FSQA_Automation/test-output/old/Default suite/methods.html
 *.xml
 *.html
+*.html
+
+FSQA_Automation/test-output/Default suite/testng-failed.xml
+
+FSQA_Automation/test-output/index.html
+
+FSQA_Automation/test-output/emailable-report.html
+
+FSQA_Automation/test-output/Default suite/Default test.xml
+
+FSQA_Automation/test-output/Default suite/Default test.html
+
+FSQA_Automation/test-output/junitreports/TEST-community.CommunityTest.xml
+
+FSQA_Automation/test-output/old/Default suite/methods-alphabetical.html
+
+FSQA_Automation/test-output/old/Default suite/methods.html
+
+FSQA_Automation/test-output/old/Default suite/reporter-output.html
+
+FSQA_Automation/test-output/old/Default suite/testng.xml.html
+
+FSQA_Automation/test-output/old/Default suite/toc.html
+
+FSQA_Automation/test-output/old/index.html
+
+FSQA_Automation/test-output/testng-failed.xml
+
+FSQA_Automation/test-output/testng-results.xml

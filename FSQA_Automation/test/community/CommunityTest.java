@@ -1,15 +1,12 @@
 package community;
 
 import static org.junit.Assert.*;
+import groups.Groups;
 
 import java.util.Calendar;
 import java.util.Date;
 
 //import org.junit.Test;
-
-
-
-
 
 
 
@@ -22,6 +19,7 @@ import community.user.About;
 import community.user.Feed;
 import community.user.Followers;
 import community.user.Following;
+//import community.user.Status;
 import community.user.User;
 import utils.BrowserUtil;
 
@@ -43,15 +41,17 @@ public class CommunityTest {
 		// fail("Not yet implemented");
 		Date date = Calendar.getInstance().getTime();
 		Login l = new Login();
-		BrowserUtil.setBrowser("ch");
+		BrowserUtil.setBrowser("chrome");
 		l.authenticate("tester@fullscreen.net", "fullscreen!!1");
 		
+		Groups g = new Groups();
+		g.createGroup( date.toString(), date.toString(), "Closed", true, false);
 		//Header h = new Header();
 		//h.homeLink();
 		
 		//SessionControls sc = new SessionControls();
 		//sc.messages();
-		//sc.notifications();
+		//sc.notifications();fff
 		//sc.accountControls();
 		
 		//NotificationsModal nm = new NotificationsModal();
@@ -76,9 +76,10 @@ public class CommunityTest {
 		//f.moreLinks();
 		//f.selectLanguages();
 		
-		User u = new User();
-		u.fsUser();
+		//User u = new User();
+		//u.fsUser();
 		//u.editProfile("Robot", "011101001", "website","slug", true, true);
+<<<<<<< HEAD
 		//u.editProfilePic("G:\\Users\\Moortala\\Documents\\GitHub\\SeleniumWebAutomation\\FSQA_Automation\\src\\community\\user\\388135main_PIA11667_full.jpg");
 		//u.editCover("G:\\Users\\Moortala\\Documents\\GitHub\\SeleniumWebAutomation\\FSQA_Automation\\src\\community\\user\\388135main_PIA11667_full.jpg");
 		//u.profileWebsite();
@@ -88,10 +89,24 @@ public class CommunityTest {
 	//	u.addExpertise("music interpreter");
 		//u.addExpertise("music arranger");
 		u.removeExpertise("musical");
+=======
+		//u.editProfilePic("//FSQA_Automation//src//community//user//388135main_PIA11667_full.jpg");
+		//***********************u.editCover("//FSQA_Automation//src//community//user//388135main_PIA11667_full.jpg");
+		//u.profileWebsite();
+		//u.twitterNickname();
+		//u.editBio("put bio description here");
+		//u.addExpertise("gamer"); ************
+		//u.removeExpertise("game");***********************
+		//u.sidebarGroups();
+		//u.sidebarChannel();
+>>>>>>> 9bdcaf299b59800fa6196cfde874dc5856eb84e3
 		//u.feed();
 		//Feed f = new Feed();
 		//f.post(date.toString());
-        //f.comment(date.toString());
+     //   f.comment("This is a comment : " + date.toString());
+	//	f.activityFilter("");
+      //  f.activityFilter("Milestones");    // use: All, Status Posts, Video Uploads, Forums, Milestones
+		//f.hidePost();
 		//f.likePost();
 		//f.likeUnlikePost();
 		//f.likeComment();
@@ -101,12 +116,28 @@ public class CommunityTest {
 		//f.UnsubscribePost(); 
 		//u.followers();
 		//Followers fo = new Followers();
+		//fo.followUnfollow();
+		//fo.userList();
 		//fo.unFollow();
 		//fo.message();
-		//Following f1 = new Following();
-		//f1.message();
+		
 		//About ab = new About();
-	//	Home h = new Home();
+		//ab.clickTags();
+		
+		//Home h = new Home();
+		//h.playFeaturedVideos(); //********************** work on playing next after 30 secs
+		//h.post("This is a Status Post : " + date.toString());
+		//h.everyoneTab();
+		//h.myFeedTab();
+		//h.changeFilterTo("Milestones");
+		//h.rsSimCreator();
+		//h.rsFUCreator();
+		//h.rsBlogLink();  //************ to be completed
+		//h.rsBlogLinkTag();  // //************ to be completed
+		//h.postComment("yoyoy"); //**** not working
+		//h.rateComment();
+		//h.ratePost();
+		
 		
 		//f.reportPost();  // not ready
 		//u.linkTwitter("fsqa01", "fstester");
@@ -128,6 +159,7 @@ public class CommunityTest {
 	}
 	 @AfterClass
 	 public void oneTimeTearDown() {
-		 BrowserUtil.driver.quit();
+		
+		BrowserUtil.driver.quit();
 	 }
 }

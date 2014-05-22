@@ -27,6 +27,7 @@ public class BrowserUtil extends Util {
 		String iePath = "/FSQA/Libraries/IEDriverServer_Win32_2.33.0/IEDriverServer.exe";
 		String chromePath = "G:/Dev/JAVA/Libraries/chromedriver_win32/chromedriver.exe";
 
+		
 		/*detect platform and change the correct the paths */
 		Platform current = Platform.getCurrent();
 		if (Platform.MAC.is(current)) {
@@ -66,6 +67,10 @@ public class BrowserUtil extends Util {
 	
 	// scroll to a specified web element
 	public static void scrollToElement(WebElement element) {
+		JavascriptExecutor jsx = (JavascriptExecutor) BrowserUtil.driver;
+		jsx.executeScript("arguments[0].scrollIntoView(true);", element);
+	}
+	public static void scrollToElement(String element) {
 		JavascriptExecutor jsx = (JavascriptExecutor) BrowserUtil.driver;
 		jsx.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
