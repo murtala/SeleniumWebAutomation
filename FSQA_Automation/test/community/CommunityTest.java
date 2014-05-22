@@ -79,11 +79,15 @@ public class CommunityTest {
 		User u = new User();
 		u.fsUser();
 		//u.editProfile("Robot", "011101001", "website","slug", true, true);
-		//u.editProfilePic("//FSQA_Automation//src//community//user//388135main_PIA11667_full.jpg");
-		u.editCover("//FSQA_Automation//src//community//user//388135main_PIA11667_full.jpg");
+		//u.editProfilePic("G:\\Users\\Moortala\\Documents\\GitHub\\SeleniumWebAutomation\\FSQA_Automation\\src\\community\\user\\388135main_PIA11667_full.jpg");
+		//u.editCover("G:\\Users\\Moortala\\Documents\\GitHub\\SeleniumWebAutomation\\FSQA_Automation\\src\\community\\user\\388135main_PIA11667_full.jpg");
 		//u.profileWebsite();
 		//u.twitterNickname();
 		//u.editBio("put bio description here");
+		u.addExpertise("musical");
+	//	u.addExpertise("music interpreter");
+		//u.addExpertise("music arranger");
+		u.removeExpertise("musical");
 		//u.feed();
 		//Feed f = new Feed();
 		//f.post(date.toString());
@@ -113,7 +117,7 @@ public class CommunityTest {
 		//u.following();
 		//u.about();	
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

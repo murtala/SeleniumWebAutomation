@@ -72,36 +72,45 @@ public class User extends BrowserUtil {
 	//	driver.findElement(By.xpath(".//input[@class='banner-file-select']")).sendKeys(path);
 		driver.findElement(By.xpath(".//input[@class='banner-file-picker']")).sendKeys(path);
 		//click save cover button
-		driver.findElement(By.xpath(".//button[@class='fs-button sm banner-save ng-binding']")).click();;
-		doneEditing();
+	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='fs-button sm banner-save ng-binding']")));
+		driver.findElement(By.xpath("//button[@class='fs-button sm banner-save ng-binding']")).click();;
+		//doneEditing();
 	}
 	public void editBio(String bio){
 		editProfile();
 
 		driver.findElement(By.name("bioField")).clear();
 		driver.findElement(By.name("bioField")).sendKeys(bio);
-		driver.findElement(By.xpath(".//*[@id='fs-content-banner-content']/div[2]/div[1]/a")).click();
+		doneEditing();
 	}
 	
-	public void addExpertise(String tag){
+	public void addExpertise(String tag){ //make sure exact tag
 		editProfile();		
-
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".fs-tag-list-secondary.editable")));
+		
 		try {
-			driver.findElement(By.xpath("//div/ul[2]//li//span[text()='"+tag+"']")).click();
+			BrowserUtil.scrollToElement(driver.findElement(By.xpath("//section//h3[.='Expertise and interests']")));
+			driver.findElement(By.id("creator-type-search")).click();
+			driver.findElement(By.id("creator-type-search")).sendKeys(tag);
+			driver.findElement(By.xpath("//ul//li//span[.='"+tag+"']")).click();
 
 		} catch (NoSuchElementException e) {
 			System.out.println("tag already added/removed");
 		}
+		//doneEditing();
 	}
 	
-	protected void removeExpertise(String tag){
-		editProfile();		
-
+	public void removeExpertise(String tag){
+		//editProfile();
+		BrowserUtil.scrollToElement(driver.findElement(By.xpath("//section//h3[.='Expertise and interests']")));
+		
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".fs-tag-list-primary.editable.sortable.ng-pristine.ng-valid.ui-sortable")));
 		try {
-			driver.findElement(By.xpath("//div/ul[1]//li//span[text()='"+tag+"']")).click();
+			driver.findElement(By.xpath("//ul//li//span[.='"+tag+"']")).click();
 		} catch (NoSuchElementException e) {
 			System.out.println("tag already added/removed");
 		}
+		//doneEditing();
 	}
 	
 	
@@ -226,6 +235,8 @@ public class User extends BrowserUtil {
 	
 	protected void doneEditing(){
 		//done editing
+		
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@ng-click='editProfile(false)']")));
 				driver.findElement(By.xpath(".//*[@class='fs-button sm fs-light ng-binding']")).click();
 	}
 }
