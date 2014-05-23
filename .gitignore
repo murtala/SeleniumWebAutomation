@@ -42,3 +42,25 @@ FSQA_Automation/.DS_Store
 FSQA_Automation/test/.DS_Store
 FSQA_Automation/.classpath
 
+
+FSQA_Automation/.classpath
+
+FSQA_Automation/test-output/Default suite/Default test.html
+
+FSQA_Automation/test-output/Default suite/Default test.xml
+
+FSQA_Automation/test-output/emailable-report.html
+
+FSQA_Automation/test-output/index.html
+
+FSQA_Automation/test-output/junitreports/TEST-community.CommunityTest.xml
+
+FSQA_Automation/test-output/old/Default suite/methods-alphabetical.html
+
+FSQA_Automation/test-output/old/Default suite/methods.html
+
+FSQA_Automation/test-output/old/Default suite/reporter-output.html
+
+FSQA_Automation/test-output/old/Default suite/testng.xml.html
+
+FSQA_Automation/test-output/testng-results.xml

@@ -44,9 +44,10 @@ public class GroupsHome {
 	//click on a random most popular group
 	public void ranMPgroup() {
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(".//*[@collection='popular']")));
-
-		WebElement allGroups = BrowserUtil.driver.findElement(By.xpath(".//*[@collection='popular' ] /*[@class='group-list-wrapper' ]"));
+		//WebElement allGroups = BrowserUtil.driver.findElement(By.xpath(".//*[@collection='popular' ] /*[@class='group-list-wrapper' ]"));
+		WebElement allGroups = BrowserUtil.driver.findElement(By.xpath(".//*[@collection='popular' ]"));
 		List<WebElement> groups = allGroups.findElements(By.tagName("a"));
+		System.out.println(groups.size());
 		scroller.scrollTo(driver.findElement(By.xpath(".//*[@collection='popular' ]/hgroup")));
 		ran.randomClick(groups);
 	}
@@ -79,7 +80,7 @@ public class GroupsHome {
 		// WebElement allGroups =
 		// BrowserUtil.driver.findElement(By.xpath("[@class='group-list-wrapper']"));
 		List<WebElement> groups =driver.findElements(By.xpath(".//*[@class='user-avatar-list' ]/a"));
-		scroller.scrollTo(driver.findElement(By.xpath(".//*[@class='user-avatar-list']/a")));
+		scroller.scrollTo(driver.findElement(By.xpath(".//*[@class='user-avatar-list']/..//..")));
 		driver.findElement(By.xpath(".//*[@class='user-avatar-list' ]/a")).click();
 		ran.randomClick(groups);
 	}
