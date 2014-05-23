@@ -31,13 +31,13 @@ public class CommunityTest {
 		BrowserUtil.setBrowser("chrome");
 		l.authenticate("tester@fullscreen.net", "fullscreen!!1");
 		
-		GroupsHome g = new GroupsHome();
-		g.createGroup( date.toString(), date.toString(), "Closed", true, false);
+		//GroupsHome g = new GroupsHome();
+		//g.createGroup( date.toString(), date.toString(), "Closed", true, false);
 		//g.allGroupsTab();
-		//g.allUavatar();
-		//g.ranMPgroup();
-		//g.ranNewgroup();
-		//g.ranUserAvatar();
+		//g.allUavatar();//********** needs scroll fix
+		//g.ranMPgroup();//**
+		//g.ranNewgroup();//**
+		//g.ranUserAvatar();//** size issues
 		//g.searchGroup("beauty");
 		//g.youGroupsTab();
 		//Header h = new Header();
