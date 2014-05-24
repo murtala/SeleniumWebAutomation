@@ -1,6 +1,7 @@
 package groups;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,6 +22,12 @@ public class groupMemberPage {
 	//go to a specified group with url  -- make sure its not a private group
 		public void openGroup(String url){
 			driver.get(url);
+		}
+		//post a status
+		public void statusPost(String status){
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//textarea[@name='statusPostText']")));
+			driver.findElement(By.xpath(".//textarea[@name='statusPostText']")).sendKeys(status);
+			driver.findElement(By.xpath(".//button[@ng-click='postStatus()']")).click();
 		}
 	//leave a group
 	public void joinLeaveGroup(){

@@ -21,7 +21,6 @@ public class ActivityFeed {
 		// clear text area and insert text
 		BrowserUtil.driver.findElement(By.name("statusPostText")).clear();
 		BrowserUtil.driver.findElement(By.name("statusPostText")).sendKeys(someText);
-		;
 		// click post
 		BrowserUtil.driver.findElement(By.xpath("//div/button")).click();
 	}
