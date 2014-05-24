@@ -8,11 +8,24 @@ import java.util.Date;
 
 //import org.junit.Test;
 
+
+
+
+
+
+
 import utils.BrowserUtil;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import community.header.NotificationsModal;
+import community.header.SessionControls;
+import community.user.Feed;
+import community.user.User;
 public class CommunityTest {
 
 	
@@ -21,8 +34,6 @@ public class CommunityTest {
 //	 WebDriverManager.startDriver();
 	 }
 	
-	 
-	 
 	@Test
 	public void test() {
 		// fail("Not yet implemented");
@@ -31,59 +42,59 @@ public class CommunityTest {
 		BrowserUtil.setBrowser("chrome");
 		l.authenticate("tester@fullscreen.net", "fullscreen!!1");
 		
-		//GroupsHome g = new GroupsHome();
-		//g.createGroup( date.toString(), date.toString(), "Closed", true, false);
-		//g.allGroupsTab();
-		//g.allUavatar();//********** needs scroll fix
-		//g.ranMPgroup();//**
-		//g.ranNewgroup();//**
-		//g.ranUserAvatar();//** size issues
-		//g.searchGroup("beauty");
-		//g.youGroupsTab();
-		//Header h = new Header();
-		//h.homeLink();
+		//top bar
+		/*SessionControls sc = new SessionControls();
+		sc.messages("This message was written on : " +  date.toString() + "" , "murtala");
+		NotificationsModal nm = new NotificationsModal();
+		nm.openRandomNotification();
+		nm.seeAll();*/
 		
-		//SessionControls sc = new SessionControls();
-		//sc.messages();
-		//sc.notifications();fff
-		//sc.accountControls();
-		
-		//NotificationsModal nm = new NotificationsModal();
-		//nm.openNotifications();
-		//nm.openRandomNotification();
-		//nm.seeAll();
-		
+		// notifications
 		//NotificationsPage np = new NotificationsPage();
 		//np.openRandomNotification();
 		//np.paginationLinks();
 		
-		//AccountControls ac = new AccountControls();
-		//ac.user();
-		//ac.editProfile();
-		//ac.help();
-		//ac.settings();
-		//ac.logOut();  //will not work if outsde coommunity cuz mouse click becomes mouse over
+		User u = new User();
+		//u.editProfile("FullofTests", "011101001", "website","tester", true, true);
+		//u.profileWebsite();
 		
-		//Footer f = new Footer();
-		//f.mobileLink();
-		//f.helpCenterLink();
-		//f.moreLinks();
-		//f.selectLanguages();
+		/** feeds  **/
+				Feed f = new Feed();
+				f.post("This is a post on: " + date.toString());
+		        f.comment("This is a comment : " + date.toString());
+			//	f.activityFilter("");
+		      //  f.activityFilter("Milestones");    // use: All, Status Posts, Video Uploads, Forums, Milestones
+				//f.hidePost();
+				//f.likePost();
+				//f.likeUnlikePost();
+				//f.likeComment();
+				//f.unlikeComment();
+				//f.timeStampPermaLink();
+				//f.hidePost();
+				//f.UnsubscribePost(); 
 		
-		//User u = new User();
-		//u.fsUser();
-		//u.editProfile("Robot", "011101001", "website","slug", true, true);
-
-		//u.editProfilePic("G:\\Users\\Moortala\\Documents\\GitHub\\SeleniumWebAutomation\\FSQA_Automation\\src\\community\\user\\388135main_PIA11667_full.jpg");
+		
+		
+		
+		
+		
+		//u.editProfilePic("G:\\Users\\Moortala\\Documents\\GitHub\\SeleniumWebA.omation\\FSQA_Automation\\src\\community\\user\\388135main_PIA11667_full.jpg");
 		//u.editCover("G:\\Users\\Moortala\\Documents\\GitHub\\SeleniumWebAutomation\\FSQA_Automation\\src\\community\\user\\388135main_PIA11667_full.jpg");
 		//u.profileWebsite();
 		//u.twitterNickname();
-		//u.editBio("put bio description here");
-		//u.addExpertise("musical");
-	//	u.addExpertise("music interpreter");
+		//u.editBio("put bio description here");  /** creates new tab, need tab handler
+		//u.addExpertise("musical"); /*****************************
+		//u.addExpertise("music interpreter");
 		//u.addExpertise("music arranger");
 		//u.removeExpertise("musical");
 
+		
+
+		//Header h = new Header();
+		//h.homeLink();
+		
+	
+		
 		
 		//on mac
 		//u.editProfilePic("//FSQA_Automation//src//community//user//388135main_PIA11667_full.jpg");
@@ -96,20 +107,7 @@ public class CommunityTest {
 		//u.sidebarGroups();
 		//u.sidebarChannel();
 
-		//u.feed();
-		//Feed f = new Feed();
-		//f.post(date.toString());
-     //   f.comment("This is a comment : " + date.toString());
-	//	f.activityFilter("");
-      //  f.activityFilter("Milestones");    // use: All, Status Posts, Video Uploads, Forums, Milestones
-		//f.hidePost();
-		//f.likePost();
-		//f.likeUnlikePost();
-		//f.likeComment();
-		//f.unlikeComment();
-		//f.timeStampPermaLink();
-		//f.hidePost();
-		//f.UnsubscribePost(); 
+		
 		//u.followers();
 		//Followers fo = new Followers();
 		//fo.followUnfollow();
@@ -143,6 +141,35 @@ public class CommunityTest {
 		//u.followers();
 		//u.following();
 		//u.about();	
+		
+
+		//GroupsHome g = new GroupsHome();
+		//g.createGroup( date.toString(), date.toString(), "Closed", true, false);
+		//g.allGroupsTab();
+		//g.allUavatar();//********** needs scroll fix
+		//g.ranMPgroup();//**
+		//g.ranNewgroup();//**
+		//g.ranUserAvatar();//** size issues
+		//g.searchGroup("beauty");
+		//g.youGroupsTab();
+		
+
+		
+		
+		//AccountControls ac = new AccountControls();
+		//ac.user();
+		//ac.editProfile();
+		//ac.help();
+		//ac.settings();
+		//ac.logOut();  //will not work if outsde coommunity cuz mouse click becomes mouse over
+		
+		//Footer f = new Footer();
+		//f.mobileLink();
+		//f.helpCenterLink();
+		//f.moreLinks();
+		//f.selectLanguages();
+		
+		
 		try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
@@ -156,6 +183,6 @@ public class CommunityTest {
 	 @AfterClass
 	 public void oneTimeTearDown() {
 		
-		BrowserUtil.driver.quit();
+		//BrowserUtil.driver.quit();
 	 }
 }
