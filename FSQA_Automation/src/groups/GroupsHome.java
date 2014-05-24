@@ -22,7 +22,10 @@ public class GroupsHome {
 	public GroupsHome() {
 		driver.get("https://staging-community.fullscreen.net/groups");
 	}
-	
+	//go to a specified group with url
+	public void openGroup(String url){
+		driver.get(url);
+	}
 	//click all groups tab
 	public void allGroupsTab(){
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(".//*[@class='nav-pill nav']")));

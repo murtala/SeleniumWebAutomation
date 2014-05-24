@@ -7,10 +7,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CustomFinder {
 
-	public static void locateXpath(String xpath, boolean highlight, boolean log) {
+	PageScroller scroller = new PageScroller();
+
+	private  void locateXpath(String xpath, boolean highlight, boolean log) {
 		WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 60);
-		
-		
+
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
 		BrowserUtil.scrollToElement(BrowserUtil.driver.findElement(By.xpath(xpath)));
 		BrowserUtil.driver.findElement(By.xpath(xpath)).click();
@@ -23,25 +24,32 @@ public class CustomFinder {
 
 		}
 	}
-	
-	public void locateXpath(String xpath) {
+
+	public  void byXpath(String xpath) {
 		WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 60);
-		
-		
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
-		BrowserUtil.scrollToElement(BrowserUtil.driver.findElement(By.xpath(xpath)));
+		scroller.scrollTo(BrowserUtil.driver.findElement(By.xpath(xpath)));
 		BrowserUtil.driver.findElement(By.xpath(xpath)).click();
-
-		
-			Highlighter.highlightElement(BrowserUtil.driver.findElement(By.xpath(xpath)));
-		
+		Highlighter.highlightElement(BrowserUtil.driver.findElement(By.xpath(xpath)));
 	}
-	
-
-	public static void locateLinkText(String linkText, boolean highlight,
-			boolean log) {
+	public  void byXpathNS(String xpath) { // without the scrolls
 		WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 60);
-	//	wait.until(ExpectedConditions.elementToBeClickable(By.linkText(linkText)));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
+		//scroller.scrollTo(BrowserUtil.driver.findElement(By.xpath(xpath)));
+		BrowserUtil.driver.findElement(By.xpath(xpath)).click();
+		Highlighter.highlightElement(BrowserUtil.driver.findElement(By.xpath(xpath)));
+	}
+	public  void byIdNS(String Id) { // without the scrolls
+		WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id(Id)));
+		//scroller.scrollTo(BrowserUtil.driver.findElement(By.xpath(xpath)));
+		BrowserUtil.driver.findElement(By.id(Id)).click();
+		Highlighter.highlightElement(BrowserUtil.driver.findElement(By.id(Id)));
+	}
+
+	private  void locateLinkText(String linkText, boolean highlight, boolean log) {
+		WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 60);
+		// wait.until(ExpectedConditions.elementToBeClickable(By.linkText(linkText)));
 		BrowserUtil.scrollToElement(BrowserUtil.driver.findElement(By.linkText(linkText)));
 		BrowserUtil.driver.findElement(By.linkText(linkText)).click();
 
@@ -53,5 +61,19 @@ public class CustomFinder {
 
 		}
 
+	}
+
+	public void byElement(WebElement webElement) {
+		WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(webElement));
+		scroller.scrollTo(webElement);
+		Highlighter.highlightElement(webElement);
+		webElement.click();
+	}
+	public void byElementNS(WebElement webElement) {
+		WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(webElement));
+		Highlighter.highlightElement(webElement);
+		webElement.click();
 	}
 }

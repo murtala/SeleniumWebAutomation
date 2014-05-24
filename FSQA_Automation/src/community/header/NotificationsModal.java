@@ -7,36 +7,34 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.BrowserUtil;
 import utils.CustomFinder;
 import utils.Highlighter;
+import utils.Randomizer;
 
 public class NotificationsModal {
+	CustomFinder find = new CustomFinder();
+	Randomizer ran = new Randomizer();
+	WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 30);
 
-	
-	public void openNotifications(){
-		CustomFinder.locateXpath("//div[@collection='notifications']//span", true, true);
+	public void openNotifications() {
+		find.byXpath("//div[@collection='notifications']//span");
 	}
-	
-	public void openRandomNotification(){
-		
-		CustomFinder.locateXpath("//div[@collection='notifications']//span", true, true);
-		//CustomFinder.locateXpath("//ul[@ng-switch-when='notifications']", true, true);		
+
+	public void openRandomNotification() {
+		find.byXpath("//div[@collection='notifications']//span");
 		WebElement Parent = BrowserUtil.driver.findElement(By.xpath("//ul[@ng-switch-when='notifications']"));
 		List<WebElement> list = Parent.findElements(By.tagName("li"));
-		Random r = new Random();
-		int ran =r.nextInt(list.size());
-		WebElement listItem = list.get(r.nextInt(ran));
-		WebElement listedItem = listItem.findElement(By.xpath("//a/div[@class='content']"));
-		BrowserUtil.scrollToElement(listedItem);
-		Highlighter.highlightElement(listedItem);
-		listedItem.click();
-			
+		ran.randomClick(list);
 	}
-	
-	public void seeAll(){
-		CustomFinder.locateXpath("//div[@collection='notifications']//span", true, true);
-		CustomFinder.locateXpath("//*[text()='See All']", false, true); //fails when higlight is true.. hmmmmmmm
+
+	public void seeAll() {
+		find.byXpath("//div[@collection='notifications']//span");
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(".//*[@id='fs-session-controls']/li[2]/div/ul")));	
+		//wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(".//*[@role='menu']")));
+		//find.byXpath(".//h4[@class='text-center']/a");  // does not work ??? WHYYYY
+		BrowserUtil.driver.navigate().to("https://staging-accounts.fullscreen.net/notifications");
 	}
 }

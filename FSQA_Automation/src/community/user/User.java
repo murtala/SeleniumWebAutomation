@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -14,6 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.BrowserUtil;
+import utils.CustomFinder;
 import utils.Highlighter;
 
 public class User extends BrowserUtil {
@@ -21,12 +23,20 @@ public class User extends BrowserUtil {
 	WebDriverWait wait = new WebDriverWait(driver, 30);
 	Highlighter h = new Highlighter();
 	Actions action = new Actions(driver);
+	CustomFinder find = new CustomFinder();
+
+	public User() {
+		find.byXpath(".//*[@class='main-menu-inner']/a");
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 
 	// click on profile icon
 	public void fsUser() {
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='fs-application-wrapper']/nav/div/a")));
-		// h.highlightElement(driver.findElement(By.cssSelector(".avatar.sm.circle")));
-		driver.findElement(By.xpath(".//*[@id='fs-application-wrapper']/nav/div/a")).click();
+		find.byXpath(".//*[@class='main-menu-inner']/a");
 	}
 
 	public void feed() {
@@ -46,13 +56,38 @@ public class User extends BrowserUtil {
 
 	/* use with caution, as for now there is no way to handle tabs in selenium. */
 	public void profileWebsite() {
-		// wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@class='website ng-binding']")));
+		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@class='website ng-binding']")));
 		try {
-			driver.findElement(By.xpath("//li[@ng-show='profile.website']")).click();
+			//driver.findElement(By.xpath("//li[@ng-show='profile.website']")).click();
+			find.byXpathNS("//li[@ng-show='profile.website']");
+			String mainwindow = driver.getWindowHandle();
+			System.out.println("main handle" + mainwindow);
+			//driver.close();
+			//driver.switchTo().window(mainwindow);
+			//driver.close();
+			//BrowserUtil.driver.findElement(By.cssSelector(".no-touch.ng-scope")).sendKeys(Keys.COMMAND + "1");
+			Set<String> handles = driver.getWindowHandles();
+			System.out.println("Handle sizes: " + handles.size());
+			System.out.println("Handles text" + handles);
+			for (String handle : handles) {
+				for (int i = 0; i <= handles.size(); i++) {
+					if (i == 0) {
+						System.out.println("Print handle" + handle);
+						continue;
+					}
+				}
+				driver.switchTo().window(mainwindow);
+				System.out.println("FINAL handle" + handle);
+				driver.close();
+			}
+			
+
 		} catch (Exception e) {
 			// e.printStackTrace();
 			System.out.println("No web site set");
 		}
+		
+		//driver.close();
 	}
 
 	public void twitterNickname() {
@@ -68,8 +103,7 @@ public class User extends BrowserUtil {
 
 	// click edit profile button
 	protected void editProfile() {
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='profile-edit-actions']/a")));
-		driver.findElement(By.xpath("//div[@class='profile-edit-actions']/a")).click();
+		find.byXpathNS("//div[@class='profile-edit-actions']/a");
 	}
 
 	public void editProfilePic(String path) { // select profile pic . PC/Mac
@@ -118,10 +152,9 @@ public class User extends BrowserUtil {
 
 	public void editBio(String bio) {
 		editProfile();
-
+		find.byElementNS(driver.findElement(By.name("bioField")));
 		driver.findElement(By.name("bioField")).clear();
 		driver.findElement(By.name("bioField")).sendKeys(bio);
-
 		doneEditing();
 	}
 
@@ -203,54 +236,55 @@ public class User extends BrowserUtil {
 	}
 
 	public void editProfile(String name, String location, String website, String slug, boolean colab, boolean hire) {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// editProfile();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//div[@class='profile-edit-actions']")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("fs-application-wrapper")));
+		find.byXpathNS(".//*[@id='cover-image-content']/div[2]/div/div[2]/a");
+		// wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//div[@class='profile-edit-actions']")));
 
 		// click pen icon
-		driver.findElement(By.xpath(".//div[@class='profile-edit-actions']")).click();
+		find.byXpathNS(".//*[@id='cover-image-content']/div[2]/div/button");
 		// Edit name
-		driver.findElement(By.xpath(".//button[@class='edit-profile-form-trigger']")).click();
-		;
+		find.byXpathNS("//input[@id='edit-profile-name']");
 		driver.findElement(By.xpath("//input[@id='edit-profile-name']")).clear();
-
 		driver.findElement(By.id("edit-profile-name")).sendKeys(name);
 		// edit location
-
+		find.byIdNS("edit-profile-location");
 		driver.findElement(By.id("edit-profile-location")).clear();
-
 		driver.findElement(By.id("edit-profile-location")).sendKeys(location);
-
 		// edit web site
+		find.byIdNS("edit-profile-website");
 		driver.findElement(By.id("edit-profile-website")).clear();
 		driver.findElement(By.id("edit-profile-website")).sendKeys(website);
 
 		// edit profile url
+		find.byIdNS("edit-slug");
 		driver.findElement(By.id("edit-slug")).clear();
 		driver.findElement(By.id("edit-slug")).sendKeys(slug);
-		JavascriptExecutor jsx = (JavascriptExecutor) driver;
 
 		// edit collaboration
 		if (colab == true) {
 
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='edit-profile-collaboration']")));
 			boolean state = driver.findElement(By.id("edit-profile-collaboration")).isSelected();
-			// Object state =
-			// jsx.executeScript(" return document.getElementById('edit-profile-collaboration').checked");
 
 			if (state == true) {
 
 			} else {
-				driver.findElement(By.id("edit-profile-collaboration")).click();
+				find.byIdNS("edit-profile-collaboration");
 			}
 		}
 		if (colab == false) {
-			// Object state =
-			// jsx.executeScript(" return document.getElementById('edit-profile-collaboration').checked");
 			boolean state = driver.findElement(By.id("edit-profile-collaboration")).isSelected();
 			if (state == false) {
 
 			} else {
-				driver.findElement(By.id("edit-profile-collaboration")).click();
+				find.byIdNS("edit-profile-collaboration");
 			}
 		}
 		// edit for hire
@@ -260,7 +294,7 @@ public class User extends BrowserUtil {
 			}
 
 		} else {
-			driver.findElement(By.id("edit-profile-hire")).click();
+			find.byIdNS("edit-profile-hire");
 		}
 		if (hire == false) {
 			boolean state = driver.findElement(By.id("edit-profile-hire")).isSelected();
@@ -268,7 +302,7 @@ public class User extends BrowserUtil {
 			}
 
 		} else {
-			driver.findElement(By.id("edit-profile-hire")).click();
+			find.byIdNS("edit-profile-hire");
 		}
 
 		save();
@@ -325,14 +359,15 @@ public class User extends BrowserUtil {
 
 	protected void save() {
 		// click save
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		find.byXpathNS("//button[@type='submit']");
 	}
 
 	protected void doneEditing() {
 		// done editing
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@ng-click='editProfile(false)']")));
-		driver.findElement(By.xpath(".//*[@class='fs-button sm fs-light ng-binding']")).click();
-		driver.findElement(By.xpath(".//*[@class='fs-button sm fs-light ng-binding']"));
+		find.byXpathNS(".//*[@class='fs-button sm fs-light ng-binding']");
+		//driver.findElement(By.xpath(".//*[@class='fs-button sm fs-light ng-binding']")).click();
+		
 	}
 }

@@ -13,17 +13,22 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.BrowserUtil;
+import utils.CustomFinder;
 import utils.Highlighter;
+import utils.Randomizer;
 
 public class Feed  {
 	WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 30);
+	CustomFinder find = new CustomFinder();
+	Randomizer ran = new Randomizer();
 	public Feed(){
-		System.out.println("Opening Feed Tab");
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='fs-application-wrapper']/nav/div/a")));
+		find.byXpathNS(".//*[@id='fs-application-wrapper']/nav/div/a");
+		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='fs-application-wrapper']/nav/div/a")));
 		//h.highlightElement(driver.findElement(By.cssSelector(".avatar.sm.circle")));
-		BrowserUtil.driver.findElement(By.xpath(".//*[@id='fs-application-wrapper']/nav/div/a")).click();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Feed']")));
-		BrowserUtil.driver.findElement(By.xpath("//a[text()='Feed']")).click();
+		//BrowserUtil.driver.findElement(By.xpath(".//*[@id='fs-application-wrapper']/nav/div/a")).click();
+		find.byXpathNS("//a[text()='Feed']");
+		//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Feed']")));
+		//BrowserUtil.driver.findElement(By.xpath("//a[text()='Feed']")).click();
 	}
 	
 
@@ -39,26 +44,26 @@ public class Feed  {
 		
 	}
 	public void post(String someText){
-		
 		wait.until(ExpectedConditions.visibilityOf(BrowserUtil.driver.findElement(By.xpath("//div[@class='fs-content-main']"))));		
 		//click feed tab
-		BrowserUtil.driver.findElement(By.xpath("//*[@data-tab='feed']")).click();
+		find.byXpathNS("//*[@data-tab='feed']");
 		//clear text area and insert text
+		find.byElementNS(BrowserUtil.driver.findElement(By.name("statusPostText")));
 		BrowserUtil.driver.findElement(By.name("statusPostText")).clear();	
 		BrowserUtil.driver.findElement(By.name("statusPostText")).sendKeys(someText);;
 		//click post
-		BrowserUtil.driver.findElement(By.xpath("//div/button")).click();
+		find.byXpathNS("//div/button");
 	}
 	
 	//post a comment on a random post
 	public void comment(String comment) { //not ready
 		wait.until(ExpectedConditions.visibilityOf(BrowserUtil.driver.findElement(By.xpath("//div[@class='activity-feed']"))));
-		WebElement allPosts = BrowserUtil.driver.findElement(By.xpath("//div[@class='activity-feed']"));
-		List<WebElement> commentFields = allPosts.findElements(By.name("commentForm"));
+		//WebElement allPosts = BrowserUtil.driver.findElement(By.xpath("//div[@class='activity-feed']"));
+		List<WebElement> commentFields = BrowserUtil.driver.findElements(By.xpath("//div[@class='activity-feed']//comment-form//textarea"));
+			
+		ran.randomClick(commentFields);
 				
-		WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 30);
-				
-		Random r = new Random();
+		/*Random r = new Random();
 		int ran;
 		WebElement listItem;
 		if(commentFields.size() == 1){
@@ -68,14 +73,14 @@ public class Feed  {
 		 ran = r.nextInt(commentFields.size());
 		  listItem = commentFields.get(r.nextInt(ran));
 			
-		}
+		}*/
 		
 		
-		WebElement listedItem = listItem.findElement(By.tagName("textarea"));
-		BrowserUtil.scrollToElement(listedItem);
-		listedItem.click();
-		listedItem.sendKeys(comment);
-		listedItem.sendKeys(Keys.ENTER);
+		//WebElement listedItem = listItem.findElement(By.tagName("textarea"));
+		BrowserUtil.scrollToElement(BrowserUtil.driver.findElement(By.xpath("//div[@class='activity-feed']//comment-form/..")));
+		//listedItem.click();
+		//listedItem.sendKeys(comment);
+		//listedItem.sendKeys(Keys.ENTER);
 
 		
 		}
