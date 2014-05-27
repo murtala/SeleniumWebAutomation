@@ -13,6 +13,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.ActivityFeed;
 import utils.BrowserUtil;
+import utils.CustomFinder;
+import utils.Highlighter;
 import utils.PageScroller;
 import utils.Randomizer;
 
@@ -20,10 +22,13 @@ public class Home {
 	static WebDriver driver = BrowserUtil.driver;
 	WebDriverWait wait = new WebDriverWait(driver, 30);
 	String path = "";
-
+	CustomFinder find = new CustomFinder();
+	Highlighter h = new Highlighter();
 	String path2 = "";
 	JavascriptExecutor js = (JavascriptExecutor) driver;
 	ActivityFeed af = new ActivityFeed();
+	 
+			
 	
 	public String menuXpathLoc(String path) {
 		return path = ".//*[@class='fs-menu-list clearfix']/li//a/span[.='" + path + "']";
@@ -32,6 +37,7 @@ public class Home {
 	public Home() {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='menu-home']")));
 		driver = BrowserUtil.driver;
+		h.highlightElement(driver.findElement(By.xpath(".//*[@id='menu-home']")));
 		driver.findElement(By.xpath(".//*[@id='menu-home']")).click();
 	}
 
@@ -73,6 +79,7 @@ public class Home {
 		List<WebElement> vids = allSc.findElements(By.xpath(".//*[@class='media-heading']//a"));
 		Randomizer r = new Randomizer();
 		r.randomClick(vids);
+		
 		driver.navigate().back();
 	}
 
@@ -164,12 +171,17 @@ public class Home {
 	public void playFeaturedVideos(){
 		WebDriverWait wait = new WebDriverWait(driver, 100);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.ss-icon.ss-play")));
+		js.executeScript("window.scrollBy(0,0);");		
+		//WebElement allVideos = BrowserUtil.driver.findElement(By.xpath(".//*[@class='pull-left video-thumb ng-isolate-scope']"));		
 		
-		WebElement allVideos = BrowserUtil.driver.findElement(By.xpath(".//*[@class='pull-left video-thumb ng-isolate-scope']"));		
+		WebElement allVideos = BrowserUtil.driver.findElement(By.xpath(".//*[@class='featured-videos clearfix']"));		
+
 		List<WebElement> vids = allVideos.findElements(By.xpath(".//*[@class='ss-icon ss-play']"));
 		Randomizer r = new Randomizer();
-		r.randomClick(vids);
-		
+		WebElement item = r.getRandomClick(vids);	
+		//find.byElementNSNC(item.findElement(By.xpath("/../../img")));
+		//r.randomClickNS(vids);
+		item.click();
 		String mainwindow = driver.getWindowHandle();
 		WebElement container = driver.findElement(By.className("player-container"));
 		WebElement frame = container.findElement(By.tagName("iframe"));
@@ -177,7 +189,15 @@ public class Home {
 		driver.findElement(By.xpath(".//*[@class='html5-video-loader html5-center-overlay ytp-scalable-icon-grow']")).click();
 		//go back to main frame
 		driver.switchTo().window(mainwindow);
+		driver.switchTo().defaultContent();
 		//wait for next video
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	    driver.findElement(By.xpath("//div[5]/div/div/div/span")).click();
 	}
 	

@@ -26,6 +26,39 @@ public class Randomizer { // in works
 			listItem = list.get(r.nextInt(ran));
 		}
 		find.byElement(listItem);
-		// listItem.click();
+		//listItem.click();
+	}
+	
+	public void randomClickNS(List<WebElement> list) {
+		Random r = new Random();
+		int ran = r.nextInt(list.size()) + 1;
+		WebElement listItem;
+		System.out.println("ran: " + ran + " size: " + list.size());
+		if (list.size() == 1 || list.size() == 0) {
+			ran = 1;
+			listItem = list.get((0));
+		} else {
+
+			listItem = list.get(r.nextInt(ran));
+		}
+		find.byElementNS(listItem);
+		//listItem.click();
+	}
+	
+	public WebElement getRandomClick(List<WebElement> list) { // with a return value
+		Random r = new Random();
+		int ran = r.nextInt(list.size()) + 1;
+		WebElement listItem;
+		System.out.println("ran: " + ran + " size: " + list.size());
+		if (list.size() == 1 || list.size() == 0) {
+			ran = 1;
+			listItem = list.get((0));
+		} else {
+
+			listItem = list.get(r.nextInt(ran));
+		}
+		//find.byElement(listItem);
+		//listItem.click();
+		return listItem;
 	}
 }

@@ -35,8 +35,13 @@ public class CustomFinder {
 	public  void byXpathNS(String xpath) { // without the scrolls
 		WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 60);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
-		//scroller.scrollTo(BrowserUtil.driver.findElement(By.xpath(xpath)));
 		BrowserUtil.driver.findElement(By.xpath(xpath)).click();
+		Highlighter.highlightElement(BrowserUtil.driver.findElement(By.xpath(xpath)));
+	}
+	
+	public  void byXpathNSNC(String xpath) { // without the scrolls
+		WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
 		Highlighter.highlightElement(BrowserUtil.driver.findElement(By.xpath(xpath)));
 	}
 	public  void byIdNS(String Id) { // without the scrolls
@@ -76,4 +81,16 @@ public class CustomFinder {
 		Highlighter.highlightElement(webElement);
 		webElement.click();
 	}
+	public void byElementNSNC(WebElement webElement) {
+		WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(webElement));
+		Highlighter.highlightElement(webElement);
+	}
+	public void byElementNC(WebElement webElement) { // noclicks
+		WebDriverWait wait = new WebDriverWait(BrowserUtil.driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(webElement));
+		Highlighter.highlightElement(webElement);
+	}
+
+	
 }

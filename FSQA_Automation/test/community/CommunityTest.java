@@ -1,12 +1,20 @@
 package community;
 
 //import static org.junit.Assert.*;
+import forums.ForumsPage;
 import groups.GroupsHome;
 
 import java.util.Calendar;
 import java.util.Date;
 
 //import org.junit.Test;
+
+
+
+
+
+
+
 
 
 
@@ -22,10 +30,13 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import community.header.AccountControls;
 import community.header.NotificationsModal;
 import community.header.SessionControls;
+import community.home.Home;
 import community.user.Feed;
 import community.user.User;
+import creators.CreatorsSearch;
 public class CommunityTest {
 
 	
@@ -35,13 +46,45 @@ public class CommunityTest {
 	 }
 	
 	@Test
-	public void test() {
+	public void test() throws InterruptedException {
 		// fail("Not yet implemented");
 		Date date = Calendar.getInstance().getTime();
 		Login l = new Login();
 		BrowserUtil.setBrowser("chrome");
-		l.authenticate("tester@fullscreen.net", "fullscreen!!1");
+		l.authenticate("tester@fullscreen.net", "");
+		Feed f = new Feed();
+		Thread.sleep(2000);
+		f.post("This is a post on: " + date.toString());
+		Thread.sleep(2000);
+        f.comment("This is a comment : " + date.toString());
+		Thread.sleep(2000);
+        f.activityFilter("Forums");//All, "Status Posts", "Video Uploads, "Forums", "Milestones"
+        Thread.sleep(2000);
 		
+        Home h = new Home();
+        h.playFeaturedVideos(); //********************** work on playing next after 30 secs
+        Thread.sleep(2000);
+        GroupsHome g = new GroupsHome();
+        Thread.sleep(2000);
+        g.searchGroup("beauty");
+        Thread.sleep(2000);
+        g.youGroupsTab();
+        Thread.sleep(2000);
+        CreatorsSearch cs = new CreatorsSearch();
+        cs.search("actors");
+        Thread.sleep(2000);
+        ForumsPage forum = new ForumsPage();
+        forum.newCategoryThread("Welcome Center", "welcome to Fullscreen !", "Hello, I am new here");
+        Thread.sleep(2000);
+        SessionControls sc = new SessionControls();
+		sc.messages("This message was written on : " +  date.toString() + "" , "murtala");
+		Thread.sleep(2000);
+		AccountControls ac = new AccountControls();
+		ac.logOut();  //will not work if outsde coommunity cuz mouse click becomes mouse over
+		
+		
+        
+		/*****************************************************************/
 		//top bar
 		/*SessionControls sc = new SessionControls();
 		sc.messages("This message was written on : " +  date.toString() + "" , "murtala");
@@ -54,17 +97,17 @@ public class CommunityTest {
 		//np.openRandomNotification();
 		//np.paginationLinks();
 		
-		User u = new User();
+	//	User u = new User();
 		//u.editProfile("FullofTests", "011101001", "website","tester", true, true);
 		//u.profileWebsite();
 		
 		/** feeds  **/
-				Feed f = new Feed();
-				f.post("This is a post on: " + date.toString());
-		        f.comment("This is a comment : " + date.toString());
-			//	f.activityFilter("");
-		      //  f.activityFilter("Milestones");    // use: All, Status Posts, Video Uploads, Forums, Milestones
-				//f.hidePost();
+				//Feed f = new Feed();
+			//	f.post("This is a post on: " + date.toString());
+		      //  f.comment("This is a comment : " + date.toString());
+			    //f.activityFilter("Milestones");//All, "Status Posts", "Video Uploads, "Forums", "Milestones"
+		        //f.activityFilter("Forums");    // use: All, Status Posts, Video Uploads, Forums, Milestones
+				//f.hidePost(); // *** top nav obstructs
 				//f.likePost();
 				//f.likeUnlikePost();
 				//f.likeComment();

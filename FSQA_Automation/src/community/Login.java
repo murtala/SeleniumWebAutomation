@@ -14,12 +14,12 @@ public class Login extends BrowserUtil {
 	/* log in */
 	public void authenticate(String email, String password) {
 		driver.get(baseUrl);
-		find.byElement(driver.findElement(By.id("user_email")));
+		find.byElementNS(driver.findElement(By.id("user_email")));
 		driver.findElement(By.id("user_email")).clear();
 		driver.findElement(By.id("user_email")).sendKeys(email);
-		find.byElement(driver.findElement(By.id("user_password")));
+		find.byElementNS(driver.findElement(By.id("user_password")));
 		driver.findElement(By.id("user_password")).clear();
 		driver.findElement(By.id("user_password")).sendKeys(password);
-		find.byElement(((driver.findElement(By.name("commit")))));
+		find.byElementNS(((driver.findElement(By.name("commit")))));
 	}
 }

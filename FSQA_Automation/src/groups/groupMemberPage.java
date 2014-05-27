@@ -32,7 +32,7 @@ public class groupMemberPage {
 	//leave a group
 	public void joinLeaveGroup(){
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(".//join-button")));
-		find.locateXpath(".//join-button");
+		find.byXpath(".//join-button");
 	}
 	//clikc Feed tab
 	public void feedTab(){
@@ -53,7 +53,6 @@ public class groupMemberPage {
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(".//a[.='Settings']")));
 		driver.findElement(By.xpath(".//a[.='Settings']")).click();
 	}
-	
 	public void playCarouselVid(){
 		
 	}

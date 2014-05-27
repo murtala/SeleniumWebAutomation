@@ -23,6 +23,7 @@ public class CreatorsSearch {
 
 	public CreatorsSearch() {
 		driver.get("https://staging-community.fullscreen.net/creators");
+		find.byXpathNSNC(".//*[@id='menu-creators']");
 	}
 	public void message(){
 		BrowserUtil.scrollToElement(BrowserUtil.driver.findElement(By.xpath("//message-button")));
@@ -116,6 +117,7 @@ public class CreatorsSearch {
 	// search creators
 	public void search(String query) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//input[@name='search']")));
+		find.byXpathNSNC(".//input[@name='search']");
 		driver.findElement(By.xpath(".//input[@name='search']")).sendKeys(query);
 		driver.findElement(By.xpath(".//input[@name='search']")).sendKeys(Keys.ENTER);
 

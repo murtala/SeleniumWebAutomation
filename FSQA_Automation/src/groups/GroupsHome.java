@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.BrowserUtil;
+import utils.CustomFinder;
+import utils.Highlighter;
 import utils.PageScroller;
 import utils.Randomizer;
 
@@ -19,8 +21,11 @@ public class GroupsHome {
 	WebDriverWait wait = new WebDriverWait(driver, 30);
 	Randomizer ran = new Randomizer();
 	PageScroller scroller = new PageScroller();
+	Highlighter hilite = new Highlighter();
+	CustomFinder find = new CustomFinder();
 	public GroupsHome() {
 		driver.get("https://staging-community.fullscreen.net/groups");
+		Highlighter.highlightElement(driver.findElement(By.xpath(".//*[@id='menu-groups']")));
 	}
 	//go to a specified group with url
 	public void openGroup(String url){
@@ -34,11 +39,13 @@ public class GroupsHome {
 	//your groups tab
 	public void youGroupsTab(){
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(".//*[@class='nav-pill nav']")));
-		driver.findElement(By.xpath(".//*[@class='nav-pill nav']/li[3]/a")).click();
+		find.byXpathNS(".//*[@class='nav-pill nav']/li[3]/a");
+		//driver.findElement(By.xpath(".//*[@class='nav-pill nav']/li[3]/a")).click();
 	}
 	//search 
 	public void searchGroup(String query){
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@placeholder='Search groups']")));
+		find.byXpathNS(".//*[@placeholder='Search groups']");
 		driver.findElement(By.xpath(".//*[@placeholder='Search groups']")).sendKeys(query);
 		driver.findElement(By.xpath(".//*[@placeholder='Search groups']")).sendKeys(Keys.ENTER);
 		

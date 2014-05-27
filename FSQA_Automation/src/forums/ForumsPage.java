@@ -3,6 +3,7 @@ package forums;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.BrowserUtil;
 import utils.CustomFinder;
+import utils.Highlighter;
 import utils.PageScroller;
 import utils.Randomizer;
 
@@ -22,10 +24,12 @@ public class ForumsPage {
 	Randomizer ran = new Randomizer();
 	PageScroller scroller = new PageScroller();
 	CustomFinder find = new CustomFinder();
+	JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	public ForumsPage() {
 		String url = "https://staging-community.fullscreen.net/forums";
 		driver.get(url);
+		find.byXpathNSNC(".//*[@id='menu-forums']");
 	}
 
 	// remove topic
@@ -178,9 +182,14 @@ public class ForumsPage {
 
 	// create a new post from the home page
 	public void newCategoryThread(String category, String title, String message) {
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='fs-application-wrapper']/div[3]/div/div[1]/a")));
+		find.byXpathNSNC(".//*[@id='fs-application-wrapper']/div[3]/div/div[1]/a");
 		driver.findElement(By.xpath(".//*[@id='fs-application-wrapper']/div[3]/div/div[1]/a")).click();
+		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='fs-application-wrapper']/div[3]/div/div[2]")));
 		String xpathExpression = ".//select[@name='categoryId']";
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathExpression)));
+		find.byXpathNSNC(xpathExpression);
 		Select select = new Select(driver.findElement(By.xpath(xpathExpression)));
 
 		switch (category) {
@@ -249,10 +258,14 @@ public class ForumsPage {
 		default:
 			break;
 		}
-
+find.byXpathNSNC(".//input[@name='postTitle']");
 		driver.findElement(By.xpath(".//input[@name='postTitle']")).sendKeys(title);
+		find.byXpathNSNC(".//textarea");
 		driver.findElement(By.xpath(".//textarea")).sendKeys(message);
-		driver.findElement(By.xpath(".//button")).click();
+		//scroller.scrollTo(driver.findElement(By.xpath(".//select[@name='categoryId']")));
+		
+		js.executeScript("window.scrollBy(0,0);");	
+		//driver.findElement(By.xpath(".//button")).click();
 	}
 
 	// click on a section
